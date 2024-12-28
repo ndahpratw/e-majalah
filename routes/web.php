@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,6 +19,6 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('pages/dashboard');
+    return view('pages/admin/dashboard');
 });
-
+Route::resource('/data-user', UserController::class)->names('data-user');

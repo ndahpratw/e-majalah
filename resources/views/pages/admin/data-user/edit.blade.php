@@ -1,0 +1,30 @@
+@extends('layouts.main')
+
+@section('content')
+    <div class="pagetitle">
+        <h1>Pengguna</h1>
+        <nav>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="">Home</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('data-user.index') }}">Pengguna</a></li>
+            <li class="breadcrumb-item active">Edit Pengguna</li>
+        </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section profile">
+        <div class="row">
+  
+          <div class="col-xl-12">
+  
+            <div class="card">
+              <div class="card-body pt-3">
+                form edit data
+              </div>
+            </div>
+  
+          </div>
+  
+        </div>
+      </section>
+@endsection

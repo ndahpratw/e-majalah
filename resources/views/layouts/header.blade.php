@@ -4,7 +4,7 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
         <img src="{{ asset('assets/img/logo.jpg') }}" alt="">
-        <span class="d-none d-lg-block"> E-Rapor Siswa </span>
+        <span class="d-none d-lg-block"> Sistem </span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->

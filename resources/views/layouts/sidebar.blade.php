@@ -6,32 +6,40 @@
     <!-- Dashboard Nav -->
     <li class="nav-item">
       <a href="{{ url('/dashboard') }}" class="nav-link {{ Request::is('dashboard') ? '' : 'collapsed' }}">
-        <i class="bi bi-grid"></i>
+        <i class="bi bi-grid-fill"></i>
         <span>Dashboard</span>
       </a>
     </li><!-- End Dashboard Nav -->
 
     <!-- Nav -->
     <li class="nav-item">
-      <a href=" " class="nav-link collapsed">
+      <a href="{{ url('/data-user') }}" class="nav-link {{ Request::is('data-user*') ? '' : 'collapsed' }}">
         <i class="bi bi-people-fill"></i>
-        <span>Fitur 1</span>
+        <span>Pengguna</span>
       </a>
     </li><!-- End Nav -->
 
     <!-- Nav -->
     <li class="nav-item">
       <a href=" " class="nav-link collapsed">
-        <i class="bi bi-people-fill"></i>
-        <span>Fitur 2</span>
+        <i class="bi bi-folder-fill"></i>
+        <span>Konten</span>
       </a>
     </li><!-- End Nav -->
 
     <!-- Nav -->
     <li class="nav-item">
       <a href=" " class="nav-link collapsed">
-        <i class="bi bi-people-fill"></i>
-        <span>Fitur 3</span>
+        <i class="bi bi-person-hearts"></i>
+        <span>Pengajuan</span>
+      </a>
+    </li><!-- End Nav -->
+
+    <!-- Nav -->
+    <li class="nav-item">
+      <a href=" " class="nav-link collapsed">
+        <i class="bi bi-display-fill"></i>
+        <span>Berita</span>
       </a>
     </li><!-- End Nav -->
 

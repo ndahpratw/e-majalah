@@ -21,7 +21,7 @@
                         <div class="card">
                             <div class="card-body row justify-content-center text-center m-2">
                                 <img src="{{ asset('assets/img/logo.jpg') }}" alt="" class="img-fluid w-50 mt-3">
-                                <h6> SELAMAT DATANG <br> DI <br> SISTEM INFORMASI INVENTORY </h6>
+                                <h6> SELAMAT DATANG </h6>
                             </div>
                         </div>
 
@@ -31,12 +31,12 @@
         </div>
         <div class="row">
     
-            <!-- GuruCard -->
+            <!-- Card -->
             <div class="col-xxl-3 col-md-6">
               <div class="card info-card sales-card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Total Guru</h5>
+                  <h5 class="card-title">Total </h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -49,14 +49,14 @@
                 </div>
 
               </div>
-            </div><!-- End GuruCard -->
+            </div><!-- End Card -->
 
-            <!-- Siswa Card -->
+            <!-- Card -->
             <div class="col-xxl-3 col-md-6">
               <div class="card info-card revenue-card">
 
                 <div class="card-body">
-                  <h5 class="card-title"> Total Siswa </h5>
+                  <h5 class="card-title"> Total </h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -69,15 +69,15 @@
                 </div>
 
               </div>
-            </div><!-- End Siswa Card -->
+            </div><!-- End Card -->
 
-            <!-- Mapel Card -->
+            <!-- Card -->
             <div class="col-xxl-3 col-md-6">
 
               <div class="card info-card customers-card">
 
                 <div class="card-body">
-                  <h5 class="card-title"> Total Mapel </h5>
+                  <h5 class="card-title"> Total </h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -91,15 +91,15 @@
                 </div>
               </div>
 
-            </div><!-- End Mapel Card -->
+            </div><!-- End Card -->
             
-            <!-- Jurusan Card -->
+            <!-- Card -->
             <div class="col-xxl-3 col-md-6">
 
               <div class="card info-card customers-card">
 
                 <div class="card-body">
-                  <h5 class="card-title"> Total Jurusan </h5>
+                  <h5 class="card-title"> Total </h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -113,7 +113,7 @@
                 </div>
               </div>
 
-            </div><!-- End Jurusan Card -->
+            </div><!-- End Card -->
 
           </div>
     </section>
