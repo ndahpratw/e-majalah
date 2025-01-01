@@ -1,0 +1,143 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 1000;
+}
+
+.sidebar a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: white;
+    cursor: pointer;
+}
+
+/* Menu Icon */
+.menu-icon {
+    position: fixed;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    color: #111;
+    cursor: pointer;
+    /* z-index: 1100; */
+}
+
+/* Content Transition */
+#mainContent {
+    transition: margin-right 0.5s;
+}
+
+/* Shifted Content */
+.shifted {
+    margin-right: 250px; /* Sama dengan lebar sidebar */
+}
+
+.row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1.2rem;
+    /* align-items: stretch; */
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 kolom sama besar */
+    gap: 1rem; /* Jarak antar kolom */
+    align-items: stretch; /* Membuat kolom sejajar */
+}
+
+.section-title {
+    text-align: center;
+    padding-bottom: 60px;
+    position: relative;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.section-title h2:before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 160px;
+    height: 1px;
+    background: gray;
+    left: 0;
+    right: 0;
+    bottom: 1px;
+    margin: auto;
+}
+
+.section-title h2::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: sienna;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    /* object-fit: cover; */
+}
+
+.landscape {
+    aspect-ratio: 16 / 9; /* Rasio untuk gambar landscape */
+    /* margin-top: 1rem; */
+}
+
+.image-container img.potrait {
+    aspect-ratio: 3 / 4; /* Rasio untuk gambar portrait */
+    height: 745px; /* Tinggi mengikuti rasio */
+    /* margin-top: 1rem; */
+}
