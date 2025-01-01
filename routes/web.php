@@ -21,4 +21,13 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('pages/admin/dashboard');
 });
+Route::get('/daftarisi', function () {
+    return view('pages/user/daftarisi');
+});
+Route::get('/content1', function () {
+    return view('pages/user/content1');
+});
+Route::get('/content2', function () {
+    return view('pages/user/content2');
+});
 Route::resource('/data-user', UserController::class)->names('data-user');

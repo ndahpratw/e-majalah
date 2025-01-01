@@ -1,0 +1,54 @@
+.drop-cap::first-letter {
+    font-size: 3rem;
+    float: left;
+    line-height: 0.7;
+    margin-right: 0.15em;
+    color:#37517e;
+}
+
+.img-fluid {
+    width: 100rem;
+    height: 20rem;
+}
+
+.isikonten {
+    font-size: 10px;
+    font-weight: bold;
+    /* Default untuk mobile */
+}
+.quote{
+    font-size:20px;
+    font-weight: bold;
+    color:#37517e;
+}
+
+@media (min-width: 768px) {
+    .drop-cap::first-letter {
+        font-size: 4rem;
+    }
+    .isikonten {
+        font-size: 16px;
+        font-weight: normal;
+        /* Tablet */
+    }
+    .quote{
+        font-size:25px;
+        font-weight: bold;
+    }
+}
+
+@media (min-width: 992px) {
+    .drop-cap::first-letter {
+        font-size: 5rem;
+        line-height: 0.8;
+    }
+    .isikonten {
+        font-size: 19px;
+        font-weight: normal;
+        /* Desktop */
+    }
+    .quote{
+        font-size:30px;
+        font-weight: bold;
+    }
+}
