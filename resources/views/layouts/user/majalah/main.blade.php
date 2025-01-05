@@ -40,17 +40,42 @@
 
 <body>
 
-  @include('layouts.header')
-  @include('layouts.sidebar')
+  <button class="btn btn-outline-secondary position-fixed top-0 end-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+    <i class="bi bi-list"></i>
+  </button>  
+    
+  <div class="offcanvas offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="staticBackdropLabel">Daftar Isi</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        <ul class="sidebar-nav" id="sidebar-nav">
 
-  <main id="main" class="main">
+          <li class="nav-item">
+            <a href="" class="nav-link">
+              <span>Topik 1</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link collapsed">
+              <span>Topik 2</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="" class="nav-link collapsed">
+              <span>Topik 3</span>
+            </a>
+          </li>
 
+        </ul>
+    </div>
+  </div>
+
+    
+  <main id="mainContent" class="main mx-3 my-4 px-3" style="text-align:justify;">    
     @yield('content')
-
   </main><!-- End #main -->
-
-  @include('layouts.footer')
-
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
@@ -66,6 +91,25 @@
   <!-- Template Main JS File -->
   <script src="{{ asset('assets/js/main.js') }}"></script>
   <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
+
+
+  <script>
+    function openSidebar() {
+        // Buka sidebar
+        document.getElementById("mySidebar").style.width = "250px";
+
+        // Geser konten utama
+        document.getElementById("mainContent").classList.add("shifted");
+    }
+
+    function closeSidebar() {
+        // Tutup sidebar
+        document.getElementById("mySidebar").style.width = "0";
+
+        // Kembalikan konten utama
+        document.getElementById("mainContent").classList.remove("shifted");
+    }
+  </script>
 
   @yield('scripts')
 </body>

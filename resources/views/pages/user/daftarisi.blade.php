@@ -3,11 +3,7 @@
 @section('konten')
 
 <div class="row section-title mt-5" data-aos="fade-right" data-aos-delay="100">
-<h2 class="text-uppercase fs-1 fw-bolder" style="letter-spacing: 15px;">Daftar Isi</h2>
-</div>
-
-
-
+  <h2 class="text-uppercase fs-1 fw-bolder" style="letter-spacing: 15px;">Daftar Isi</h2>
 </div>
 
 <!-- Daftar Isi Section -->
