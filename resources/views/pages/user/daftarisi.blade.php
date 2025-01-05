@@ -24,8 +24,27 @@
                   </div>
                   <div class="col-10">
                     <h4>Catatan Redaksi</h4>
-                    <p class="text-truncate w-75">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut perferendis ratione deleniti necessitatibus iste tempore eius inventore doloribus consectetur dicta?</p>
-                    <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h5 class="badge rounded-pill bg-secondary">
+                        Lorem ipsum dolor sit amet.
+                        <a href=""> <i class="text-light bi bi-arrow-up-right-circle-fill"></i> </a>
+                      </h5>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <h5 class="badge rounded-pill bg-secondary">
+                        Lorem ipsum dolor sit amet.
+                        <a href=""> <i class="text-light bi bi-arrow-up-right-circle-fill"></i> </a>
+                      </h5>
+                    </div>
+                    <div class="d-flex justify-content-end align-items-center">
+                      <h6>
+                       <a href="" class="link-primary btn link-offset-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          More
+                          <i class="bi bi-caret-right-fill"></i>
+                       </a>
+                      </h6>
+                    </div>
+                    {{-- <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a> --}}
                   </div>
                 </div>
               </div>
@@ -41,7 +60,7 @@
                   <div class="col-10">
                     <h4>Cerita Hidup</h4>
                     <p class="text-truncate w-75">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut perferendis ratione deleniti necessitatibus iste tempore eius inventore doloribus consectetur dicta?</p>
-                    <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    {{-- <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a> --}}
                   </div>
                 </div>
               </div>
@@ -59,7 +78,7 @@
                   <div class="col-10">
                     <h4>Map Kota Malang & Bali</h4>
                     <p class="text-truncate w-75">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum vero nostrum reiciendis ullam quas deserunt illum omnis doloribus, alias quo?</p>
-                    <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    {{-- <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a> --}}
                   </div>
                 </div>
               </div>
@@ -75,7 +94,7 @@
                   <div class="col-10">
                     <h4>Kilas Wisata</h4>
                     <p class="text-truncate w-75">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt dolore eveniet impedit sit vitae officia cum odio perspiciatis qui alias.</p>
-                    <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    {{-- <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a> --}}
                   </div>
                 </div>
               </div>
@@ -91,7 +110,7 @@
                   <div class="col-10">
                     <h4>Kuliner</h4>
                     <p class="text-truncate w-75">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum vero nostrum reiciendis ullam quas deserunt illum omnis doloribus, alias quo?</p>
-                    <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    {{-- <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a> --}}
                   </div>
                 </div>
               </div>
@@ -107,7 +126,7 @@
                   <div class="col-10">
                     <h4>Tips dan Solusi Sehat</h4>
                     <p class="text-truncate w-75">Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus, veritatis voluptas magni fuga distinctio labore molestiae ipsam necessitatibus at excepturi.</p>
-                    <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    {{-- <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a> --}}
                   </div>
                 </div>
               </div>
@@ -123,7 +142,7 @@
                   <div class="col-10">                   
                     <h4>Peluang Usaha</h4>
                     <p class="text-truncate w-75">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia tenetur quia possimus eum vitae, excepturi sed voluptatum ratione placeat minima!</p>
-                    <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    {{-- <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a> --}}
                   </div>
                 </div>
               </div>
@@ -139,7 +158,7 @@
                   <div class="col-10">
                     <h4>Jasa Titip</h4>
                     <p class="text-truncate w-75">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia tenetur quia possimus eum vitae, excepturi sed voluptatum ratione placeat minima!</p>
-                    <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    {{-- <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a> --}}
                   </div>
                 </div>
               </div>
@@ -155,7 +174,7 @@
                   <div class="col-10">
                     <h4>Kecantikan</h4>
                     <p class="text-truncate w-75">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia tenetur quia possimus eum vitae, excepturi sed voluptatum ratione placeat minima!</p>
-                    <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    {{-- <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a> --}}
                   </div>
                 </div>
               </div>
@@ -171,7 +190,7 @@
                   <div class="col-10">
                     <h4>Loker</h4>
                     <p class="text-truncate w-75">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia tenetur quia possimus eum vitae, excepturi sed voluptatum ratione placeat minima!</p>
-                    <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    {{-- <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a> --}}
                   </div>
                 </div>
               </div>
@@ -186,7 +205,7 @@
                   <div class="col-10">
                     <h4>Ketenangan Jiwa</h4>
                     <p class="text-truncate w-75">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia tenetur quia possimus eum vitae, excepturi sed voluptatum ratione placeat minima!</p>
-                    <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    {{-- <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a> --}}
                   </div>
                 </div>
               </div>
@@ -201,7 +220,7 @@
                   <div class="col-10">
                     <h4>Jendela Promosi</h4>
                     <p class="text-truncate w-75">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia tenetur quia possimus eum vitae, excepturi sed voluptatum ratione placeat minima!</p>
-                    <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    {{-- <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a> --}}
                   </div>
                 </div>
               </div>
@@ -217,7 +236,7 @@
                   <div class="col-10">
                     <h4>Laporan Khusus</h4>
                     <p class="text-truncate w-75">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia tenetur quia possimus eum vitae, excepturi sed voluptatum ratione placeat minima!</p>
-                    <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a>
+                    {{-- <a href="portfolio-details.html" title="Selengkapnya" class="details-link"><i class="bi bi-link-45deg"></i></a> --}}
                   </div>
                 </div>
               </div>
@@ -229,6 +248,52 @@
         </div>
 
       </div>
+
+
+      {{-- modals --}}
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Catatan Redaksi</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body fs-3">
+              <div class="d-flex justify-content-between align-items-center">
+                <h5 class="badge rounded-pill bg-secondary">
+                  Lorem ipsum dolor sit amet.
+                  <a href=""> <i class="text-light bi bi-arrow-up-right-circle-fill"></i> </a>
+                </h5>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <h5 class="badge rounded-pill bg-secondary">
+                  Lorem ipsum dolor sit amet.
+                  <a href=""> <i class="text-light bi bi-arrow-up-right-circle-fill"></i> </a>
+                </h5>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <h5 class="badge rounded-pill bg-secondary">
+                  Lorem ipsum dolor sit amet.
+                  <a href=""> <i class="text-light bi bi-arrow-up-right-circle-fill"></i> </a>
+                </h5>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <h5 class="badge rounded-pill bg-secondary">
+                  Lorem ipsum dolor sit amet.
+                  <a href=""> <i class="text-light bi bi-arrow-up-right-circle-fill"></i> </a>
+                </h5>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <h5 class="badge rounded-pill bg-secondary">
+                  Lorem ipsum dolor sit amet.
+                  <a href=""> <i class="text-light bi bi-arrow-up-right-circle-fill"></i> </a>
+                </h5>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
     </section><!-- /Portfolio Section -->
 @endsection
