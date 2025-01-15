@@ -21,7 +21,7 @@
 
     <!-- Nav -->
     <li class="nav-item">
-      <a href=" " class="nav-link collapsed">
+      <a href="{{ url('/konten') }}" class="nav-link collapsed">
         <i class="bi bi-folder-fill"></i>
         <span>Konten</span>
       </a>

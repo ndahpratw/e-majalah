@@ -21,10 +21,10 @@ class UserSeeder extends Seeder
             User::create([
                 'name' => $faker->name,
                 'email' => $faker->unique()->safeEmail,
-                'jenis_kelamin' => $faker->randomElement(['L', 'P']),
                 'no_telepon' => $faker->phoneNumber,
-                'profile' => 'profile.jpg',
                 'role' => $faker->randomElement(['Admin', 'Mitra']),
+                'address' => $faker->address,
+                'instansi' => $faker->name,
                 'password' => Hash::make('password'), // default password
             ]);
         }

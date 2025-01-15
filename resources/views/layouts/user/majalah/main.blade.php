@@ -40,9 +40,9 @@
 
 <body>
 
-  <button class="btn btn-outline-secondary position-fixed top-0 end-0" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
-    <i class="bi bi-list"></i>
-  </button>  
+  <a class="position-fixed top-0 end-0 text-black" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+    <i class="bi bi-list fs-1"></i>
+  </a>  
     
   <div class="offcanvas offcanvas-end" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
     <div class="offcanvas-header">
@@ -52,21 +52,33 @@
     <div class="offcanvas-body">
         <ul class="sidebar-nav" id="sidebar-nav">
 
-          <li class="nav-item">
-            <a href="" class="nav-link">
-              <span>Topik 1</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="" class="nav-link collapsed">
-              <span>Topik 2</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="" class="nav-link collapsed">
-              <span>Topik 3</span>
-            </a>
-          </li>
+        @php
+          use Illuminate\Support\Facades\DB;
+          $konten = DB::table('kontens')->get();
+          $detail_konten = DB::table('detail_kontens')->get();
+        @endphp  
+
+        @foreach ($konten as $item)            
+        <!-- Penilaian Nav -->
+        <li class="nav-item">
+          <a class="nav-link collapsed" data-bs-target="#info-data{{ $item->id }}" data-bs-toggle="collapse" href="#">
+            <i class="bi bi-file-text-fill"></i>
+            <span> {{ $item->topik }}</span>
+            <i class="bi bi-chevron-down ms-auto"></i>
+          </a>
+          <ul id="info-data{{ $item->id }}" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+            <!-- Kelas Nav -->
+            @foreach ($detail_konten->where('id_konten',$item->id) as $item)
+            <li class="nav-item">
+                <a href="" class="nav-link collapsed">
+                    <i class="bi bi-circle"></i>
+                    <span>{{ $item->judul }} </span>
+                </a>
+            </li>
+            @endforeach          
+          </ul>
+        </li><!-- End Penilaian Nav -->
+        @endforeach
 
         </ul>
     </div>

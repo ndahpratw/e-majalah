@@ -43,12 +43,12 @@
                     <thead>
                       <tr class="text-center">
                         <th> No.  </th>
-                        <th> Profile </th>
                         <th> Nama </th>
                         <th> Email </th>
-                        <th> Jenis Kelamin </th>
+                        <th> Alamat </th>
                         <th> No Telepon </th>
                         <th> Role </th>
+                        <th> Instansi </th>
                         <th></th>
                       </tr>
                     </thead>
@@ -56,16 +56,9 @@
                       @foreach ($data_user as $item)
                           <tr>
                             <td> {{ $no++ }} </td>
-                            <td> {{ $item->profile }} </td>
                             <td> {{ $item->name }} </td>
                             <td> {{ $item->email }} </td>
-                            <td>
-                                @if ($item->jenis_kelamin == "L")
-                                    Laki - Laki
-                                @else
-                                    Perempuan
-                                @endif
-                            </td>
+                            <td> {{ $item->address }} </td>
                             <td> {{ $item->no_telepon }} </td>
                             <td> 
                               @if($item->role == 'Admin')
@@ -74,6 +67,7 @@
                                   <span class="badge rounded-pill bg-warning">{{ $item->role }}</span>
                               @endif
                             </td>   
+                            <td> {{ $item->instansi }} </td>   
                             <td>
                                 {{-- edit data --}}
                                 <a href="{{ route('data-user.edit' , $item->id) }}" class="btn btn-primary shadow-none"><i class="ri-pencil-fill"></i></a>
@@ -101,7 +95,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </td>                    
+                            </td>                 
                           </tr>
                       @endforeach
                     </tbody>

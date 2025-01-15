@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\KontenController;
+use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\UserController;
+use App\Models\Konten;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,9 +24,9 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('pages/admin/dashboard');
 });
-Route::get('/daftar-isi', function () {
-    return view('pages/user/daftarisi');
-});
+
+Route::get('/daftar-isi', [KontenController::class, 'index_user']);
+
 
 Route::get('/layout1', function () {
     return view('pages/user/layout-majalah/layout1');
@@ -48,3 +51,5 @@ Route::get('/layout6', function () {
 });
 
 Route::resource('/data-user', UserController::class)->names('data-user');
+Route::resource('/konten', KontenController::class)->names('konten');
+Route::resource('/layout', LayoutController::class)->names('layout');

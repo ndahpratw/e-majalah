@@ -21,8 +21,15 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
-            MajalahSeeder::class,
             PengajuanSeeder::class,
+            KontenSeeder::class,
+            DetailKontenSeeder::class,
+            Layout1Seeder::class,
+            Layout2Seeder::class,
+            Layout3Seeder::class,
+            Layout4Seeder::class,
+            Layout5Seeder::class,
+            Layout6Seeder::class,
         ]);
     }
 }

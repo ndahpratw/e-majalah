@@ -1,0 +1,45 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('layout3s', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('id_detail_konten')->references('id')->on('detail_kontens')->onDelete('cascade');
+            $table->text('isi_konten_1');
+            $table->text('isi_konten_2');
+            $table->text('isi_konten_3');
+            $table->text('isi_konten_4');
+            $table->text('isi_konten_5');
+            $table->text('isi_konten_6');
+            $table->string('gambar_1');
+            $table->string('gambar_2');
+            $table->string('gambar_3');
+            $table->string('gambar_4');
+            $table->string('gambar_5');
+            $table->string('gambar_6');
+            $table->string('gambar_7');
+            $table->string('gambar_8');
+            $table->string('gambar_9');
+            $table->string('gambar_10');
+            $table->string('gambar_11');
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('layout3s');
+    }
+};
