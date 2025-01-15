@@ -15,15 +15,11 @@ class Layout6Seeder extends Seeder
     public function run(): void
     {
         $faker = Factory::create();
-        $availableDetailKontenIds = DB::table('detail_kontens')->pluck('id')->toArray(); // Get all available 'id_detail_konten'
-        $usedIds = []; // Keep track of used ids
-        
-        foreach (range(1, 5) as $index) {
-            $randomId = $faker->randomElement(array_diff($availableDetailKontenIds, $usedIds)); // Get a random unused id
-            $usedIds[] = $randomId; // Mark this id as used
+        foreach (range(1, 5) as $index) { // Using range to generate numbers from 1 to 5
+            $id_detail_konten = $index + 25; // Adding an offset to start from 6
         
             DB::table('layout6s')->insert([
-                'id_detail_konten' => $randomId, // Assign the unique id
+                'id_detail_konten' => $id_detail_konten, 
                 'isi_konten_1' => implode(' ', $faker->words(500)),
                 'isi_konten_2' => implode(' ', $faker->words(500)),
                 'isi_konten_3' => implode(' ', $faker->words(500)),
