@@ -1,10 +1,16 @@
 <?php
 
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\KontenController;
 use App\Http\Controllers\LayoutController;
-use App\Http\Controllers\UserController;
-use App\Models\Konten;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Layout1Controller;
+use App\Http\Controllers\Layout2Controller;
+use App\Http\Controllers\Layout3Controller;
+use App\Http\Controllers\Layout4Controller;
+use App\Http\Controllers\Layout5Controller;
+use App\Http\Controllers\Layout6Controller;
+use App\Http\Controllers\DetailKontenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,29 +33,13 @@ Route::get('/dashboard', function () {
 
 Route::get('/daftar-isi', [KontenController::class, 'index_user']);
 
-
-Route::get('/layout1', function () {
-    return view('pages/user/layout-majalah/layout1');
-});
-Route::get('/layout11', function () {
-    return view('pages/user/layout-majalah/layout_satu');
-});
-Route::get('/layout2', function () {
-    return view('pages/user/layout-majalah/layout2');
-});
-Route::get('/layout3', function () {
-    return view('pages/user/layout-majalah/layout3');
-});
-Route::get('/layout4', function () {
-    return view('pages/user/layout-majalah/layout4');
-});
-Route::get('/layout5', function () {
-    return view('pages/user/layout-majalah/layout5');
-});
-Route::get('/layout6', function () {
-    return view('pages/user/layout-majalah/layout6');
-});
-
 Route::resource('/data-user', UserController::class)->names('data-user');
 Route::resource('/konten', KontenController::class)->names('konten');
+Route::resource('/detail-konten', DetailKontenController::class)->names('detail-konten');
 Route::resource('/layout', LayoutController::class)->names('layout');
+Route::resource('/layout1', Layout1Controller::class)->names('layout1');
+Route::resource('/layout2', Layout2Controller::class)->names('layout2');
+Route::resource('/layout3', Layout3Controller::class)->names('layout3');
+Route::resource('/layout4', Layout4Controller::class)->names('layout4');
+Route::resource('/layout5', Layout5Controller::class)->names('layout5');
+Route::resource('/layout6', Layout6Controller::class)->names('layout6');

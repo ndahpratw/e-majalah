@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DetailKonten;
 use App\Models\Konten;
+use App\Models\DetailKonten;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class KontenController extends Controller
 {
@@ -46,8 +47,10 @@ class KontenController extends Controller
      */
     public function show($id)
     {
+        $id = $id;
+        $konten = Konten::findOrFail($id);
         $detail_konten = DetailKonten::where('id_konten',$id)->get();
-        return view('pages.admin.konten.show', compact('detail_konten'));
+        return view('pages.admin.konten.show', compact('id','konten','detail_konten'));
     }
 
     /**

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="pagetitle">
-        <h1>Konten Daftar Isi</h1>
+        <h1>Konten</h1>
         <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="">Home</a></li>
@@ -19,7 +19,7 @@
   
             <div class="card">
               <div class="card-body pt-3">
-                form edit data
+                form edit data konten
               </div>
             </div>
   

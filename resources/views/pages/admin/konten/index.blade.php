@@ -48,20 +48,20 @@
                             <div class="d-flex justify-content-between align-items-center">
                               <h5 class="card-title">{{ $item->topik }}</h5>
                               <div class="d-flex gap-2">
-                                <a href="" class="btn btn-primary"><i class="ri-pencil-fill"></i></a>
-                                <button type="button" class="btn btn-danger shadow-none" data-bs-toggle="modal" data-bs-target="#hapus-ekstrakurikuler"><i class="bi bi-trash"></i></button>
-                                <div class="modal fade" id="hapus-ekstrakurikuler" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <a href="{{ route('konten.edit',$item->id) }}" class="btn btn-primary"><i class="ri-pencil-fill"></i></a>
+                                <button type="button" class="btn btn-danger shadow-none" data-bs-toggle="modal" data-bs-target="#hapus-konten{{ $item->id }}"><i class="bi bi-trash"></i></button>
+                                <div class="modal fade" id="hapus-konten{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                           <div class="modal-header">
                                             <h5 class="modal-title">Konfirmasi Hapus Data</h5>
                                           </div>
                                           <div class="modal-body text-center">
-                                              <p style="color: black">Apakah anda yakin untuk menghapus data <b>{{ $item->topik }}</b> <br> Jika iya, data kegiatan yang berkaitan juga akan terhapus </p>
+                                              <p style="color: black">Apakah anda yakin untuk menghapus konten <b>{{ $item->topik }}</b> ? <br> Jika iya, semua judul yang berkaitan juga akan terhapus </p>
                                           </div>
                                           <div class="modal-footer">
                                               <button type="button" class="btn btn-secondary btn-sm shadow-none" data-bs-dismiss="modal">Tidak</button>
-                                              <form action="/delete-ekstrakurikuler/{{$item->id}}" method="POST" style="display: inline;">
+                                              <form action="{{ route('konten.destroy',$item->id) }}" method="POST" style="display: inline;">
                                                   @method('delete')
                                                   @csrf
                                                   <input type="submit" value="Hapus" class="btn btn-danger btn-sm shadow-none">

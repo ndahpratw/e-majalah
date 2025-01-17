@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Layout5;
+use App\Models\DetailKonten;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class Layout5Controller extends Controller
 {
@@ -34,15 +35,16 @@ class Layout5Controller extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Layout5 $layout5)
+    public function show(string $id)
     {
-        //
+        $detail_konten = DetailKonten::findOrFail($id);
+        return view('pages/admin/layout/layout1', compact('detail_konten'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Layout5 $layout5)
+    public function edit(string $id)
     {
         //
     }
@@ -50,7 +52,7 @@ class Layout5Controller extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Layout5 $layout5)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -58,7 +60,7 @@ class Layout5Controller extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Layout5 $layout5)
+    public function destroy(string $id)
     {
         //
     }
