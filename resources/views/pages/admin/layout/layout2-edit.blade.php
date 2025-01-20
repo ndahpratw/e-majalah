@@ -2,69 +2,53 @@
 
 @section('content')
     <div class="pagetitle">
-        <h1>Data Detail Konten</h1>
+        <h1>Detail Konten</h1>
         <nav>
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="">Home</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('konten.index') }}">Konten</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('konten.show', $detail_konten->id_konten) }}">Detail Konten</a></li>
-            <li class="breadcrumb-item active">Tambah Data</li>
+            <li class="breadcrumb-item"><a href="{{ route('konten.index',$layout->isi_konten_1) }}">Konten</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('konten.show',$data->id_konten) }}">Detail Konten</a></li>
+            <li class="breadcrumb-item active">Edit Detail Konten</li>
         </ol>
         </nav>
     </div><!-- End Page Title -->
 
     <section class="section profile">
         <div class="row">
-          <div class="col-xl-12">
-            @if (session()->has('success'))
-              <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <i class="bi bi-check-circle me-1"></i>
-                  {{ session('success') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-            @elseif (session()->has('error'))
-              <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <i class="bi bi-exclamation-octagon me-1"></i>
-                  {{ session('error') }}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-              </div>
-            @endif
-          </div>
   
           <div class="col-xl-12">
   
             <div class="card">
               <div class="card-body pt-3">
-                <div class="table-responsive">
-                    <table class="w-100">
-                        <tr>
-                            <td><b>Konten</b></td>
-                            <td> : </td>
-                            <td>{{ $detail_konten->konten->topik }}</td>
-                        </tr>
-                        <tr>
-                            <td><b>Judul</b></td>
-                            <td> : </td>
-                            <td>{{ $detail_konten->judul }}</td>
-                        </tr>
-                        <tr>
-                            <td><b>Sub Judul</b></td>
-                            <td> : </td>
-                            <td>{{ $detail_konten->sub_judul }}</td>
-                        </tr>
-                        <tr>
-                            <td><b>Layout</b></td>
-                            <td> : </td>
-                            <td>
-                              @if ($detail_konten->jenis_layout == null)
-                                  2
-                              @else
-                                {{ $detail_konten->jenis_layout }}
-                              @endif
-                            </td>
-                        </tr>
-                    </table>
-                </div>
+                <form action="{{ route('detail-konten.update',$data->id) }}" method="post">
+                    @csrf
+                    @method('put')
+                    <div class="row">
+                        <div class="col-md-12 mt-1">
+                          <label for="judul" class="form-label">Judul</label>
+                          <input type="text" name="judul" class="form-control @error('judul') is-invalid @enderror shadow-none" id="judul" value="{{ $data->judul }}">
+                          @error('judul') 
+                          <div class="invalid-feedback">
+                              {{ $message }}
+                          </div> 
+                          @enderror
+                        </div>
+                        <div class="col-md-12 mt-3">
+                          <label id="sub_judul" class="form-label">Sub Judul</label>
+                          <input type="text" name="sub_judul" class="form-control @error('sub_judul') is-invalid @enderror shadow-none" id="sub_judul" value="{{ $data->sub_judul }}">
+                          @error('sub_judul') 
+                          <div class="invalid-feedback">
+                              {{ $message }}
+                          </div> 
+                          @enderror
+                        </div>                        
+
+                        <div class="mt-5 mb-3 d-flex justify-content-between align-items-center">
+                            <a href="{{ route('konten.show',$data->id_konten) }}" class="btn btn-secondary">Kembali</a>
+                            <button type="submit" class="btn btn-primary">Kirim</button>
+                        </div>
+                    </div>
+                </form>
               </div>
             </div>
   
@@ -75,13 +59,14 @@
             <div class="card">
               <div class="card-body pt-3">
                 <h5 class="text-center mt-2 text-primary"> Informasi Detail Konten </h5>
-                <form action="{{ route('layout2.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('layout2.update', $layout->id) }}" method="post" enctype="multipart/form-data">
                   @csrf
-                  <input type="hidden" name="id_konten" value="{{ $detail_konten->id_konten }}">
-                  <input type="hidden" name="id" value="{{ $detail_konten->id }}">
+                  @method('put')
+                  <input type="hidden" name="id_konten" value="{{ $data->id_konten }}">
+                  <input type="hidden" name="id" value="{{ $data->id }}">
                   <div class="mt-4">
                     <label for="" class="form-label fw-bold">Paragraf 1</label>
-                    <input id="isi_konten_1" type="hidden" name="isi_konten_1" value="{{ old('isi_konten_1') }}">
+                    <input id="isi_konten_1" type="hidden" name="isi_konten_1" value="{{ old('isi_konten_1',$layout->isi_konten_1) }}">
                     <trix-editor input="isi_konten_1"></trix-editor>
                     @error('isi_konten_1')
                     <p class="text-danger fs-6">
@@ -100,7 +85,7 @@
                   </div>
                   <div class="mt-4">
                     <label for="" class="form-label fw-bold">Paragraf 2</label>
-                    <input id="isi_konten_2" type="hidden" name="isi_konten_2" value="{{ old('isi_konten_2') }}">
+                    <input id="isi_konten_2" type="hidden" name="isi_konten_2" value="{{ old('isi_konten_2',$layout->isi_konten_2) }}">
                     <trix-editor input="isi_konten_2"></trix-editor>
                     @error('isi_konten_2')
                     <p class="text-danger fs-6">
@@ -119,7 +104,7 @@
                   </div>
                   <div class="mt-4">
                     <label for="" class="form-label fw-bold">Paragraf 3</label>
-                    <input id="isi_konten_3" type="hidden" name="isi_konten_3" value="{{ old('isi_konten_3') }}">
+                    <input id="isi_konten_3" type="hidden" name="isi_konten_3" value="{{ old('isi_konten_3',$layout->isi_konten_3) }}">
                     <trix-editor input="isi_konten_3"></trix-editor>
                     @error('isi_konten_3')
                     <p class="text-danger fs-6">
@@ -138,7 +123,7 @@
                   </div>
                   <div class="mt-4">
                     <label for="" class="form-label fw-bold">Paragraf 4</label>
-                    <input id="isi_konten_4" type="hidden" name="isi_konten_4" value="{{ old('isi_konten_4') }}">
+                    <input id="isi_konten_4" type="hidden" name="isi_konten_4" value="{{ old('isi_konten_4',$layout->isi_konten_4) }}">
                     <trix-editor input="isi_konten_4"></trix-editor>
                     @error('isi_konten_4')
                     <p class="text-danger fs-6">
@@ -148,7 +133,7 @@
                   </div>
 
                   <div class="my-5 d-flex justify-content-between align-items-center">
-                    <a href="{{ route('konten.show', $detail_konten->id_konten) }}" class="btn btn-secondary">Kembali</a>
+                    <a href="{{ route('konten.show', $data->id_konten) }}" class="btn btn-secondary">Kembali</a>
                     <button type="submit" class="btn btn-primary"> Kirim </button>
                   </div>
                 </form>

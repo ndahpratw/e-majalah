@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('id_konten')->references('id')->on('kontens')->onDelete('cascade');
             $table->string('judul');
             $table->string('sub_judul');
+            $table->string('jenis_layout')->nullable();
             $table->timestamps();
         });
     }

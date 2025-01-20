@@ -55,7 +55,13 @@
                         <tr>
                             <td><b>Layout</b></td>
                             <td> : </td>
-                            <td>1</td>
+                            <td>
+                              @if ($detail_konten->jenis_layout == null)
+                                5
+                              @else
+                                {{ $detail_konten->jenis_layout }}
+                              @endif
+                            </td>
                         </tr>
                     </table>
                 </div>

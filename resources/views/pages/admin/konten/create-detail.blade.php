@@ -25,6 +25,10 @@
                     <input type="hidden" name="id_konten" value="{{ $id }}">
                     <div class="row">
                         <div class="col-md-12 mt-1">
+                          <label for="topik" class="form-label">Topik</label>
+                          <input type="text" id="topik" value="{{ $konten->topik }}" class="form-control" disabled>
+                        </div>
+                        <div class="col-md-12 mt-3">
                           <label for="judul" class="form-label">Judul</label>
                           <input type="text" name="judul" class="form-control @error('judul') is-invalid @enderror shadow-none" id="judul" value="{{ old('judul') }}">
                           @error('judul') 
@@ -76,43 +80,43 @@
                         </div>
                         <div class="col-md-5 offset-md-1 mt-5">
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="layout" value="layout1" id="layout1" 
-                                       {{ old('layout') == 'layout1' ? 'checked' : '' }}>
+                                <input class="form-check-input" type="radio" name="layout" value="Layout 1" id="layout1" 
+                                       {{ old('layout') == 'Layout 1' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="layout1">
                                     Layout 1
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="layout" value="layout2" id="layout2" 
-                                       {{ old('layout') == 'layout2' ? 'checked' : '' }}>
+                                <input class="form-check-input" type="radio" name="layout" value="Layout 2" id="layout2" 
+                                       {{ old('layout') == 'Layout 2' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="layout2">
                                     Layout 2
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="layout" value="layout3" id="layout3" 
-                                       {{ old('layout') == 'layout3' ? 'checked' : '' }}>
+                                <input class="form-check-input" type="radio" name="layout" value="Layout 3" id="layout3" 
+                                       {{ old('layout') == 'Layout 3' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="layout3">
                                     Layout 3
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="layout" value="layout4" id="layout4" 
-                                       {{ old('layout') == 'layout4' ? 'checked' : '' }}>
+                                <input class="form-check-input" type="radio" name="layout" value="Layout 4" id="layout4" 
+                                       {{ old('layout') == 'Layout 4' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="layout4">
                                     Layout 4
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="layout" value="layout5" id="layout5" 
-                                       {{ old('layout') == 'layout5' ? 'checked' : '' }}>
+                                <input class="form-check-input" type="radio" name="layout" value="Layout 5" id="layout5" 
+                                       {{ old('layout') == 'Layout 5' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="layout5">
                                     Layout 5
                                 </label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="layout" value="layout6" id="layout6" 
-                                       {{ old('layout') == 'layout6' ? 'checked' : '' }}>
+                                <input class="form-check-input" type="radio" name="layout" value="Layout 6" id="layout6" 
+                                       {{ old('layout') == 'Layout 6' ? 'checked' : '' }}>
                                 <label class="form-check-label" for="layout6">
                                     Layout 6
                                 </label>

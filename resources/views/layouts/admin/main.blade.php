@@ -26,6 +26,14 @@
   <link href="{{ asset('assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
   <link href="{{ asset('assets/vendor/simple-datatables/style.css') }}" rel="stylesheet">
 
+  {{-- Trix --}}
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/trix.css') }}">
+  <style>
+    trix-toolbar [data-trix-button-group="file-tools"] {
+      display: none;
+    }
+  </style>
+
   <!-- Template Main CSS File -->
   <link href="{{  asset('assets/css/style.css') }}" rel="stylesheet">
 
@@ -67,6 +75,13 @@
   <script src="{{ asset('assets/js/main.js') }}"></script>
   <script src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
 
+  {{-- Trix --}}
+  <script type="text/javascript" src="{{ asset('assets/js/trix.umd.min.js') }}"></script>
+  <script>
+    document.addEventListener('trix-file-accept', function(e) {
+      e.preventDefault();
+    })
+  </script>
   @yield('scripts')
 </body>
 

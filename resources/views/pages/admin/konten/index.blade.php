@@ -79,7 +79,7 @@
                     @endforeach
                   @else
                     <div class="d-flex justify-content-center align-items-center text-center">
-                      <p style="color: red"> Belum Ada Extrakurikuler Sesuai Bidang </p>
+                      <p style="color: red"> Belum Ada Topik </p>
                     </div>
                   @endif
                 </div>
