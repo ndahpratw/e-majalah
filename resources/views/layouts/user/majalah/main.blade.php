@@ -70,9 +70,9 @@
             <!-- Kelas Nav -->
             @foreach ($detail_konten->where('id_konten',$item->id) as $item)
             <li class="nav-item">
-                <a href="" class="nav-link collapsed">
+                <a href="{{ route('layout.show',$item->id) }}" class="nav-link collapsed">
                     <i class="bi bi-circle"></i>
-                    <span>{{ $item->judul }} </span>
+                    <span>{{ \Illuminate\Support\Str::limit($item->judul, 30, '...') }} </span>
                 </a>
             </li>
             @endforeach          

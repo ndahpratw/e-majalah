@@ -28,8 +28,7 @@
                       @foreach ($detail_konten->where('id_konten',$item->id)->take(2) as $items)
                         <div class="d-flex justify-content-between align-items-center">
                           <h5 class="badge rounded-pill bg-secondary">
-                            {{ $items->judul }}
-                            <a href=""> <i class="text-light bi bi-arrow-up-right-circle-fill"></i> </a>
+                            <a href="{{ route('layout.show',$items->id) }}" class="text-light"> {{ \Illuminate\Support\Str::limit($items->judul, 30, '...') }} <i class="text-light bi bi-arrow-up-right-circle-fill"></i> </a>
                           </h5>
                         </div>
                       @endforeach
@@ -61,8 +60,8 @@
                       @foreach ($detail_konten->where('id_konten',$item->id) as $items)
                         <div class="d-flex justify-content-between align-items-center">
                           <h5 class="badge rounded-pill bg-secondary">
-                            {{ $items->judul }}
-                            <a href=""> <i class="text-light bi bi-arrow-up-right-circle-fill"></i> </a>
+                            
+                            <a href="{{ route('layout.show',$items->id) }}" class="text-light"> {{ \Illuminate\Support\Str::limit($items->judul, 35, '...') }}  <i class="text-light bi bi-arrow-up-right-circle-fill"></i> </a>
                           </h5>
                         </div>
                       @endforeach
