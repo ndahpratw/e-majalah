@@ -123,6 +123,17 @@ class KontenController extends Controller
      */
     public function destroy($id)
     {
-        $konten = Konten::fk
+        $konten = Konten::findOrFail($id);
+
+        $fotoPath = public_path('assets/img/konten/'. $konten->gambar);
+        if (file_exists($fotoPath)) {
+            unlink($fotoPath);
+        }
+
+        if ($konten->delete()) {
+            return redirect()->back()->with('success', 'Berhasil menghapus data');            
+        } else {
+            return redirect()->back()->with('error', 'Gagal menghapus data');
+        }
     }
 }
