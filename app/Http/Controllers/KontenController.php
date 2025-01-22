@@ -39,7 +39,26 @@ class KontenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'topik' => 'required',
+            'gambar' => 'required',
+        ]);
+
+        $konten = new Konten();
+
+        $gambar = $request->file('gambar');
+        $imageName = $request->topik . '.' . $gambar->extension();
+        $gambar->move(public_path('assets/img/konten/'), $imageName);
+
+        $konten->topik = $request->topik;
+        $konten->gambar = $imageName;
+
+        if ($konten->save()) {
+            return redirect()->route('konten.index')->with('success', 'Konten telah di tambahkan');
+        } else {
+            return redirect()->route('konten.index')->with('error', 'Gagal menambahkan Konten');
+        }
+
     }
 
     /**
@@ -65,16 +84,45 @@ class KontenController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Konten $konten)
+    public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'topik' => 'required',
+            'gambar' => 'required',
+        ]);
+
+        $konten = Konten::findOrFail($id);
+
+        if ($request->hasFile('gambar')) {
+            // Hapus file foto sebelumnya dari penyimpanan
+            if ($konten->gambar && file_exists(public_path('assets/img/konten/'. $konten->gambar))) {
+                unlink(public_path('assets/img/konten/'. $konten->gambar));
+            }
+    
+            $gambar = $request->file('gambar');
+            $imageName = $request->topik . '.' . $gambar->extension();
+            $gambar->move(public_path('assets/img/konten/'), $imageName);
+        } else {
+            $imageName = $konten->gambar;
+        }   
+
+        $konten->update([
+            'topik' => $request->topik,
+            'gambar' => $imageName,
+        ]);
+
+        if ($konten->save()) {
+            return redirect()->route('konten.index')->with('success', 'Konten telah diupdate');
+        } else {
+            return redirect()->route('konten.index')->with('error', 'Gagal mengupdate Konten');
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Konten $konten)
+    public function destroy($id)
     {
-        //
+        $konten = Konten::fk
     }
 }
