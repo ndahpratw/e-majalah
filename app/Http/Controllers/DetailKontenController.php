@@ -139,6 +139,7 @@ class DetailKontenController extends Controller
         $detail_konten = DetailKonten::findOrFail($id);
 
         if ($detail_konten->jenis_layout == 'Layout 1') {
+           if (Layout1::where('id_detail_konten', $id)->exists()) {
             $layout = Layout1::where('id_detail_konten', $id)->first();
         
             foreach (['gambar_1', 'gambar_2', 'gambar_3', 'gambar_4', 'gambar_5', 'gambar_6', 'gambar_7', 'gambar_8', 'gambar_9'] as $gambar) {
@@ -149,51 +150,61 @@ class DetailKontenController extends Controller
                     }
                 }
             }
+           }
         } elseif ($detail_konten->jenis_layout == 'Layout 2') {
-            $layout = Layout2::where('id_detail_konten', $id)->first();
+            if (Layout2::where('id_detail_konten', $id)->exists()) {
+                $layout = Layout2::where('id_detail_konten', $id)->first();
         
-            foreach (['gambar_1', 'gambar_2', 'gambar_3'] as $gambar) {
-                if ($layout->$gambar) {
-                    $fotoPath = public_path('assets/img/konten/' . $detail_konten->konten->topik . '/' . $layout->$gambar);
-                    if (file_exists($fotoPath)) {
-                        unlink($fotoPath);
+                foreach (['gambar_1', 'gambar_2', 'gambar_3'] as $gambar) {
+                    if ($layout->$gambar) {
+                        $fotoPath = public_path('assets/img/konten/' . $detail_konten->konten->topik . '/' . $layout->$gambar);
+                        if (file_exists($fotoPath)) {
+                            unlink($fotoPath);
+                        }
                     }
                 }
             }
         } elseif ($detail_konten->jenis_layout == 'Layout 3') {
-            $layout = Layout3::where('id_detail_konten', $id)->first();
+            if (Layout3::where('id_detail_konten', $id)->exists()) {
+                $layout = Layout3::where('id_detail_konten', $id)->first();
         
-            foreach (['gambar_1', 'gambar_2', 'gambar_3', 'gambar_4', 'gambar_5', 'gambar_6', 'gambar_7', 'gambar_8', 'gambar_9', 'gambar_10', 'gambar_11'] as $gambar) {
-                if ($layout->$gambar) {
-                    $fotoPath = public_path('assets/img/konten/' . $detail_konten->konten->topik . '/' . $layout->$gambar);
-                    if (file_exists($fotoPath)) {
-                        unlink($fotoPath);
+                foreach (['gambar_1', 'gambar_2', 'gambar_3', 'gambar_4', 'gambar_5', 'gambar_6', 'gambar_7', 'gambar_8', 'gambar_9', 'gambar_10', 'gambar_11'] as $gambar) {
+                    if ($layout->$gambar) {
+                        $fotoPath = public_path('assets/img/konten/' . $detail_konten->konten->topik . '/' . $layout->$gambar);
+                        if (file_exists($fotoPath)) {
+                            unlink($fotoPath);
+                        }
                     }
                 }
             }
         } elseif ($detail_konten->jenis_layout == 'Layout 4') {
-            $layout = Layout4::where('id_detail_konten', $id)->first();
+            if (Layout4::where('id_detail_konten', $id)->exists()) {
+                $layout = Layout4::where('id_detail_konten', $id)->first();
         
-            foreach (['gambar_1', 'gambar_2', 'gambar_3', 'gambar_4', 'gambar_5'] as $gambar) {
-                if ($layout->$gambar) {
-                    $fotoPath = public_path('assets/img/konten/' . $detail_konten->konten->topik . '/' . $layout->$gambar);
-                    if (file_exists($fotoPath)) {
-                        unlink($fotoPath);
+                foreach (['gambar_1', 'gambar_2', 'gambar_3', 'gambar_4', 'gambar_5'] as $gambar) {
+                    if ($layout->$gambar) {
+                        $fotoPath = public_path('assets/img/konten/' . $detail_konten->konten->topik . '/' . $layout->$gambar);
+                        if (file_exists($fotoPath)) {
+                            unlink($fotoPath);
+                        }
                     }
                 }
             }
         } elseif ($detail_konten->jenis_layout == 'Layout 5') {
-            $layout = Layout5::where('id_detail_konten', $id)->first();
+            if (Layout5::where('id_detail_konten', $id)->exists()) {
+                $layout = Layout5::where('id_detail_konten', $id)->first();
         
-            foreach (['gambar_1', 'gambar_2', 'gambar_3', 'gambar_4'] as $gambar) {
-                if ($layout->$gambar) {
-                    $fotoPath = public_path('assets/img/konten/' . $detail_konten->konten->topik . '/' . $layout->$gambar);
-                    if (file_exists($fotoPath)) {
-                        unlink($fotoPath);
+                foreach (['gambar_1', 'gambar_2', 'gambar_3', 'gambar_4'] as $gambar) {
+                    if ($layout->$gambar) {
+                        $fotoPath = public_path('assets/img/konten/' . $detail_konten->konten->topik . '/' . $layout->$gambar);
+                        if (file_exists($fotoPath)) {
+                            unlink($fotoPath);
+                        }
                     }
                 }
             }
         } elseif ($detail_konten->jenis_layout == 'Layout 6') {
+           if (Layout6::where('id_detail_konten', $id)->exists()) {
             $layout = Layout6::where('id_detail_konten', $id)->first();
         
             foreach (['gambar_1', 'gambar_2', 'gambar_3'] as $gambar) {
@@ -204,6 +215,7 @@ class DetailKontenController extends Controller
                     }
                 }
             }
+           }
         }
         
 

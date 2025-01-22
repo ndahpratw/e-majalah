@@ -26,38 +26,38 @@
 
 <div class="row my-3 justify-content-end align-items-end">
     <div class="col">
-        <img src="{{ asset('assets/img/'.$item->gambar_1) }}" class="img-fluid" alt="" style="height: 60%; width:100%; float: right;">
+        <img src="{{ asset('assets/img/konten/'. $isi->detail_konten->konten->topik . '/' .$isi->gambar_1) }}" alt="{{ $isi->gambar_1 }}" class="images m-3 d-block rounded">
     </div>
 </div>
 
 <div class="row">
     <div class="col-lg-6 col-12">
         <p style="text-align: justify;">
-            {{ $isi->isi_konten_1 }}
+            {!! $isi->isi_konten_1 !!}
         </p>
     </div>
     <div class="col-lg-6 col-12">
         <p style="text-align: justify;">
-            {{ $isi->isi_konten_2 }}
+            {!! $isi->isi_konten_2 !!}
         </p>
     </div>
 </div>
 
 <div class="row my-3 justify-content-start align-items-start">
     <div class="col">
-        <img src="{{ asset('assets/img/'.$isi->gambar_2) }}" class="img-fluid" alt="" style="height: 60%; width:100%; float: left;">
+        <img src="{{ asset('assets/img/konten/'. $isi->detail_konten->konten->topik . '/' .$isi->gambar_2) }}" alt="{{ $isi->gambar_2 }}" class="images m-3 d-block rounded">
     </div>
 </div>
 
 <div class="row">
     <div class="col-lg-6 col-12">
         <p style="text-align: justify;">
-            {{ $isi->isi_konten_3 }}
+            {!! $isi->isi_konten_3 !!}
         </p>
     </div>
     <div class="col-lg-6 col-12">
         <p style="text-align: justify;">
-            {{ $isi->isi_konten_4 }}
+            {!! $isi->isi_konten_4 !!}
         </p>
     </div>
 </div>
@@ -65,10 +65,10 @@
 <div class="row my-4">
     <div class="col-12">
         <div class="float-start">
-            <img src="{{ asset('assets/img/'.$isi->gambar_3) }}" alt="Deskripsi gambar" class="potrait img-fluid m-3 d-block rounded">
+            <img src="{{ asset('assets/img/konten/'. $isi->detail_konten->konten->topik . '/' .$isi->gambar_3) }}" alt="{{ $isi->gambar_3 }}" class="images m-3 d-block rounded">
         </div>
         <p style="text-align: justify;">
-            {{ $isi->isi_konten_5 }}
+            {!! $isi->isi_konten_5 !!}
         </p>
    </div>
 </div>

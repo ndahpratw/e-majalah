@@ -147,8 +147,7 @@
                   @enderror
                   </div>
 
-                  <div class="my-5 d-flex justify-content-between align-items-center">
-                    <a href="{{ route('konten.show', $detail_konten->id_konten) }}" class="btn btn-secondary">Kembali</a>
+                  <div class="my-5 d-flex justify-content-center align-items-center">
                     <button type="submit" class="btn btn-primary"> Kirim </button>
                   </div>
                 </form>

@@ -23,7 +23,7 @@
     <div class="row my-4">
         <div class="col-lg-6 col-12">
             <p style="text-align: justify; text-indent: 25px;">
-                {{ $isi->isi_konten_1 }}
+                {!! $isi->isi_konten_1 !!}
             </p>
         </div>
 
@@ -31,28 +31,28 @@
 
         <div class="col-lg-6 col-12">
             <p style="text-align: justify; text-indent: 25px;">
-                {{ $isi->isi_konten_2 }}
+                {!! $isi->isi_konten_2 !!}
             </p>
         </div>
     </div>
 
     <div class="row my-4">
         <div class="col-6">
-            <img src="{{ asset('assets/img/'.$isi->gambar_1) }}" class="img-fluid m-2" alt="">
+            <img src="{{ asset('assets/img/konten/'. $isi->detail_konten->konten->topik . '/' . $isi->gambar_1) }}" class="img-fluid m-2" alt="{{ $isi->gambar_1 }}">
         </div>
         <div class="col-6">
-            <img src="{{ asset('assets/img/'.$isi->gambar_2) }}" class="img-fluid m-2" alt="">
+            <img src="{{ asset('assets/img/konten/'. $isi->detail_konten->konten->topik . '/' . $isi->gambar_2) }}" class="img-fluid m-2" alt="{{ $isi->gambar_2 }}">
         </div>
         <div class="col-lg-6 col-12">
-            <img src="{{ asset('assets/img/'.$isi->gambar_3) }}" class="img-fluid m-2" alt="">
+            <img src="{{ asset('assets/img/konten/'. $isi->detail_konten->konten->topik . '/' . $isi->gambar_3) }}" class="img-fluid m-2" alt="{{ $isi->gambar_3 }}">
         </div>
         <div class="col-lg-6 col-12">
             <div class="row">
                 <div class="col-lg-12 col-6">
-                    <img src="{{ asset('assets/img/'.$isi->gambar_4) }}" class="img-fluid m-2" alt="">
+                    <img src="{{ asset('assets/img/konten/'. $isi->detail_konten->konten->topik . '/' . $isi->gambar_4) }}" class="img-fluid m-2" alt="{{ $isi->gambar_4 }}">
                 </div>
                 <div class="col-lg-12 col-6">
-                    <img src="{{ asset('assets/img/'.$isi->gambar_5) }}" class="img-fluid m-2" alt="">
+                    <img src="{{ asset('assets/img/konten/'. $isi->detail_konten->konten->topik . '/' . $isi->gambar_5) }}" class="img-fluid m-2" alt="{{ $isi->gambar_5 }}">
                 </div>
             </div>
         </div>
@@ -61,11 +61,11 @@
     <div class="row my-4">
         <div class="col-12">
              <div class="float-end">
-                 <img src="{{ asset('assets/img/'.$isi->gambar_6) }}" alt="Deskripsi gambar" class="images m-3 d-block rounded">
-                 <img src="{{ asset('assets/img/'.$isi->gambar_7) }}" alt="Deskripsi gambar" class="images m-3 d-block rounded">
+                 <img src="{{ asset('assets/img/konten/'. $isi->detail_konten->konten->topik . '/' . $isi->gambar_6) }}" alt="{{ $isi->gambar_6 }}" class="images m-3 d-block rounded">
+                 <img src="{{ asset('assets/img/konten/'. $isi->detail_konten->konten->topik . '/' . $isi->gambar_7) }}" alt="{{ $isi->gambar_7 }}" class="images m-3 d-block rounded">
              </div>
              <p>
-                {{ $isi->isi_konten_3 }}
+                {!! $isi->isi_konten_3 !!}
              </p>
         </div>
     </div>
@@ -74,12 +74,12 @@
         <div class="col-12">
             <!-- Gambar pertama dengan teks mengalir -->
              <div class="float-start">
-                 <img src="{{ asset('assets/img/'.$isi->gambar_8) }}" alt="Deskripsi gambar" class="images m-3 d-block rounded">
+                 <img src="{{ asset('assets/img/konten/'. $isi->detail_konten->konten->topik . '/' . $isi->gambar_8) }}" alt="{{ $isi->gambar_8 }}" class="images m-3 d-block rounded">
                  <!-- Gambar kedua dengan teks mengalir -->
-                 <img src="{{ asset('assets/img/'.$isi->gambar_9) }}" alt="Deskripsi gambar" class="images m-3 d-block rounded">
+                 <img src="{{ asset('assets/img/konten/'. $isi->detail_konten->konten->topik . '/' . $isi->gambar_9) }}" alt="{{ $isi->gambar_9 }}" class="images m-3 d-block rounded">
              </div>
              <p>
-                {{ $isi->isi_konten_4 }}
+                {!! $isi->isi_konten_4 !!}
              </p>
         </div>
     </div>

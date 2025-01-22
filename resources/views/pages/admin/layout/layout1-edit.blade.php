@@ -41,7 +41,7 @@
                               {{ $message }}
                           </div> 
                           @enderror
-                        </div>                        
+                        </div>  
                         <div class="col-md-12 mt-3">
                           <label id="jenis_layout" class="form-label">Layout</label>
                           <input type="text" name="jenis_layout" class="form-control @error('jenis_layout') is-invalid @enderror shadow-none" id="jenis_layout" value="{{ $data->jenis_layout }}" disabled>
@@ -50,7 +50,8 @@
                               {{ $message }}
                           </div> 
                           @enderror
-                        </div>  
+                        </div>                        
+
                         <div class="mt-5 mb-3 d-flex justify-content-between align-items-center">
                             <a href="{{ route('konten.show',$data->id_konten) }}" class="btn btn-secondary">Kembali</a>
                             <button type="submit" class="btn btn-primary">Kirim</button>
@@ -67,7 +68,7 @@
             <div class="card">
               <div class="card-body pt-3">
                 <h5 class="text-center mt-2 text-primary"> Informasi Detail Konten </h5>
-                <form action="{{ route('layout2.update', $layout->id) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('layout1.update', $layout->id) }}" method="post" enctype="multipart/form-data">
                   @csrf
                   @method('put')
                   <input type="hidden" name="id_konten" value="{{ $data->id_konten }}">
@@ -83,15 +84,6 @@
                     @enderror
                   </div>
                   <div class="mt-4">
-                    <label for="" class="form-label fw-bold">Gambar 1</label>
-                    <input type="file" name="gambar_1" id="" class="form-control @error('gambar_1') is-invalid @enderror" accept="image/*">
-                    @error('gambar_1')
-                      <div class="invalid-feedback">
-                          {{ $message }}
-                      </div>
-                    @enderror
-                  </div>
-                  <div class="mt-4">
                     <label for="" class="form-label fw-bold">Paragraf 2</label>
                     <input id="isi_konten_2" type="hidden" name="isi_konten_2" value="{{ old('isi_konten_2',$layout->isi_konten_2) }}">
                     <trix-editor input="isi_konten_2"></trix-editor>
@@ -99,15 +91,6 @@
                     <p class="text-danger fs-6">
                       {{ $message }}
                     </p>
-                    @enderror
-                  </div>
-                  <div class="mt-4">
-                    <label for="" class="form-label fw-bold">Gambar 2</label>
-                    <input type="file" name="gambar_2" id="" class="form-control @error('gambar_2') is-invalid @enderror" accept="image/*">
-                    @error('gambar_2')
-                      <div class="invalid-feedback">
-                          {{ $message }}
-                      </div>
                     @enderror
                   </div>
                   <div class="mt-4">
@@ -121,6 +104,34 @@
                     @enderror
                   </div>
                   <div class="mt-4">
+                    <label for="" class="form-label fw-bold">Paragraf 4</label>
+                    <input id="isi_konten_4" type="hidden" name="isi_konten_4" value="{{ old('isi_konten_4',$layout->isi_konten_4) }}">
+                    <trix-editor input="isi_konten_4"></trix-editor>
+                    @error('isi_konten_4')
+                    <p class="text-danger fs-6">
+                      {{ $message }}
+                    </p>
+                  @enderror
+                  </div>
+                  <div class="mt-4">
+                    <label for="" class="form-label fw-bold">Gambar 1</label>
+                    <input type="file" name="gambar_1" id="" class="form-control @error('gambar_1') is-invalid @enderror" accept="image/*">
+                    @error('gambar_1')
+                      <div class="invalid-feedback">
+                          {{ $message }}
+                      </div>
+                    @enderror
+                  </div>
+                  <div class="mt-4">
+                    <label for="" class="form-label fw-bold">Gambar 2</label>
+                    <input type="file" name="gambar_2" id="" class="form-control @error('gambar_2') is-invalid @enderror" accept="image/*">
+                    @error('gambar_2')
+                      <div class="invalid-feedback">
+                          {{ $message }}
+                      </div>
+                    @enderror
+                  </div>
+                  <div class="mt-4">
                     <label for="" class="form-label fw-bold">Gambar 3</label>
                     <input type="file" name="gambar_3" id="" class="form-control @error('gambar_3') is-invalid @enderror" accept="image/*">
                     @error('gambar_3')
@@ -130,14 +141,58 @@
                     @enderror
                   </div>
                   <div class="mt-4">
-                    <label for="" class="form-label fw-bold">Paragraf 4</label>
-                    <input id="isi_konten_4" type="hidden" name="isi_konten_4" value="{{ old('isi_konten_4',$layout->isi_konten_4) }}">
-                    <trix-editor input="isi_konten_4"></trix-editor>
-                    @error('isi_konten_4')
-                    <p class="text-danger fs-6">
-                      {{ $message }}
-                    </p>
-                  @enderror
+                    <label for="" class="form-label fw-bold">Gambar 4</label>
+                    <input type="file" name="gambar_4" id="" class="form-control @error('gambar_4') is-invalid @enderror" accept="image/*">
+                    @error('gambar_4')
+                      <div class="invalid-feedback">
+                          {{ $message }}
+                      </div>
+                    @enderror
+                  </div>
+                  <div class="mt-4">
+                    <label for="" class="form-label fw-bold">Gambar 5</label>
+                    <input type="file" name="gambar_5" id="" class="form-control @error('gambar_5') is-invalid @enderror" accept="image/*">
+                    @error('gambar_5')
+                      <div class="invalid-feedback">
+                          {{ $message }}
+                      </div>
+                    @enderror
+                  </div>
+                  <div class="mt-4">
+                    <label for="" class="form-label fw-bold">Gambar 6</label>
+                    <input type="file" name="gambar_6" id="" class="form-control @error('gambar_6') is-invalid @enderror" accept="image/*">
+                    @error('gambar_6')
+                      <div class="invalid-feedback">
+                          {{ $message }}
+                      </div>
+                    @enderror
+                  </div>
+                  <div class="mt-4">
+                    <label for="" class="form-label fw-bold">Gambar 7</label>
+                    <input type="file" name="gambar_7" id="" class="form-control @error('gambar_7') is-invalid @enderror" accept="image/*">
+                    @error('gambar_7')
+                      <div class="invalid-feedback">
+                          {{ $message }}
+                      </div>
+                    @enderror
+                  </div>
+                  <div class="mt-4">
+                    <label for="" class="form-label fw-bold">Gambar 8</label>
+                    <input type="file" name="gambar_8" id="" class="form-control @error('gambar_8') is-invalid @enderror" accept="image/*">
+                    @error('gambar_8')
+                      <div class="invalid-feedback">
+                          {{ $message }}
+                      </div>
+                    @enderror
+                  </div>
+                  <div class="mt-4">
+                    <label for="" class="form-label fw-bold">Gambar 9</label>
+                    <input type="file" name="gambar_9" id="" class="form-control @error('gambar_9') is-invalid @enderror" accept="image/*">
+                    @error('gambar_9')
+                      <div class="invalid-feedback">
+                          {{ $message }}
+                      </div>
+                    @enderror
                   </div>
 
                   <div class="my-5 d-flex justify-content-between align-items-center">

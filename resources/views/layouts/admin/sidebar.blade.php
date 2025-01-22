@@ -21,7 +21,7 @@
 
     <!-- Nav -->
     <li class="nav-item">
-      <a href="{{ url('/konten') }}" class="nav-link {{ Request::is('konten*') | Request::is('detail-konten*') ?  '' : 'collapsed' }}">
+      <a href="{{ url('/konten') }}" class="nav-link {{ Request::is('konten*') | Request::is('layout1*') | Request::is('layout2*') | Request::is('layout3*') | Request::is('layout4*') | Request::is('layout5*') | Request::is('layout6*') | Request::is('detail-konten*') ?  '' : 'collapsed' }}">
         <i class="bi bi-folder-fill"></i>
         <span>Konten</span>
       </a>
