@@ -10,6 +10,19 @@ class Layout4 extends Model
 {
     use HasFactory;
 
+    protected $table = 'layout4s';
+    protected $fillable = [
+        'isi_konten_1',
+        'isi_konten_2',
+        'isi_konten_3',
+        'isi_konten_4',
+        'gambar_1',
+        'gambar_2',
+        'gambar_3',
+        'gambar_4',
+        'gambar_5',
+    ];
+
     public function detail_konten()
     {
         return $this->belongsTo(DetailKonten::class, 'id_detail_konten');

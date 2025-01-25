@@ -30,9 +30,9 @@
               </div>
             @endif
           </div>
-  
+
           <div class="col-xl-12">
-  
+
             <div class="card">
               <div class="card-body pt-3">
                 <div class="table-responsive">
@@ -67,19 +67,112 @@
                 </div>
               </div>
             </div>
-  
+
           </div>
 
           <div class="col-xl-12">
-  
-            <div class="card">
+
+          <div class="card">
               <div class="card-body pt-3">
-                form tambah layout 4
+                <h5 class="text-center mt-2 text-primary"> Informasi Detail Konten </h5>
+                <form action="{{ route('layout4.store') }}" method="post" enctype="multipart/form-data">
+                  @csrf
+                  <input type="hidden" name="id_konten" value="{{ $detail_konten->id_konten }}">
+                  <input type="hidden" name="id" value="{{ $detail_konten->id }}">
+                  <div class="mt-4">
+                    <label for="" class="form-label fw-bold">Paragraf 1</label>
+                    <input id="isi_konten_1" type="hidden" name="isi_konten_1" value="{{ old('isi_konten_1') }}">
+                    <trix-editor input="isi_konten_1"></trix-editor>
+                    @error('isi_konten_1')
+                    <p class="text-danger fs-6">
+                      {{ $message }}
+                    </p>
+                    @enderror
+                  </div>
+                  <div class="mt-4">
+                    <label for="" class="form-label fw-bold">Gambar 1</label>
+                    <input type="file" name="gambar_1" id="" class="form-control @error('gambar_1') is-invalid @enderror" accept="image/*">
+                    @error('gambar_1')
+                      <div class="invalid-feedback">
+                          {{ $message }}
+                      </div>
+                    @enderror
+                  </div>
+                  <div class="mt-4">
+                    <label for="" class="form-label fw-bold">Paragraf 2</label>
+                    <input id="isi_konten_2" type="hidden" name="isi_konten_2" value="{{ old('isi_konten_2') }}">
+                    <trix-editor input="isi_konten_2"></trix-editor>
+                    @error('isi_konten_2')
+                    <p class="text-danger fs-6">
+                      {{ $message }}
+                    </p>
+                    @enderror
+                  </div>
+                  <div class="mt-4">
+                    <label for="" class="form-label fw-bold">Gambar 2</label>
+                    <input type="file" name="gambar_2" id="" class="form-control @error('gambar_2') is-invalid @enderror" accept="image/*">
+                    @error('gambar_2')
+                      <div class="invalid-feedback">
+                          {{ $message }}
+                      </div>
+                    @enderror
+                  </div>
+                  <div class="mt-4">
+                    <label for="" class="form-label fw-bold">Paragraf 3</label>
+                    <input id="isi_konten_3" type="hidden" name="isi_konten_3" value="{{ old('isi_konten_3') }}">
+                    <trix-editor input="isi_konten_3"></trix-editor>
+                    @error('isi_konten_3')
+                    <p class="text-danger fs-6">
+                      {{ $message }}
+                    </p>
+                    @enderror
+                  </div>
+                  <div class="mt-4">
+                    <label for="" class="form-label fw-bold">Gambar 3</label>
+                    <input type="file" name="gambar_3" id="" class="form-control @error('gambar_3') is-invalid @enderror" accept="image/*">
+                    @error('gambar_3')
+                      <div class="invalid-feedback">
+                          {{ $message }}
+                      </div>
+                    @enderror
+                  </div>
+                  <div class="mt-4">
+                    <label for="" class="form-label fw-bold">Paragraf 4</label>
+                    <input id="isi_konten_4" type="hidden" name="isi_konten_4" value="{{ old('isi_konten_4') }}">
+                    <trix-editor input="isi_konten_4"></trix-editor>
+                    @error('isi_konten_4')
+                    <p class="text-danger fs-6">
+                      {{ $message }}
+                    </p>
+                  @enderror
+                  </div>
+                  <div class="mt-4">
+                    <label for="" class="form-label fw-bold">Gambar 4</label>
+                    <input type="file" name="gambar_4" id="" class="form-control @error('gambar_4') is-invalid @enderror" accept="image/*">
+                    @error('gambar_4')
+                      <div class="invalid-feedback">
+                          {{ $message }}
+                      </div>
+                    @enderror
+                  </div>
+                  <div class="mt-4">
+                    <label for="" class="form-label fw-bold">Gambar 5</label>
+                    <input type="file" name="gambar_5" id="" class="form-control @error('gambar_5') is-invalid @enderror" accept="image/*">
+                    @error('gambar_5')
+                      <div class="invalid-feedback">
+                          {{ $message }}
+                      </div>
+                    @enderror
+                  </div>
+                  <div class="my-5 d-flex justify-content-center align-items-center">
+                    <button type="submit" class="btn btn-primary"> Kirim </button>
+                  </div>
+                </form>
               </div>
             </div>
-  
+
           </div>
-  
+
         </div>
       </section>
 @endsection
