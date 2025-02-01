@@ -40,10 +40,10 @@ height: 100%;
                 {{ session('wrong') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
-                @elseif(session('sukses'))
+                @elseif(session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <i class="bi bi-check-circle me-1"></i>
-                {{ session('sukses') }}
+                {{ session('success') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
@@ -53,14 +53,20 @@ height: 100%;
       
                 <!-- Email input -->
                 <div data-mdb-input-init class="form-outline mb-4">
-                  <input type="email" id="form3Example3" class="form-control form-control-lg" name="email" placeholder="Enter a valid email address" />
+                  <input type="email" id="form3Example3" class="form-control form-control-lg @error('email') is-invalid @enderror shadow-none" name="email" placeholder="Enter a valid email address" />
                   <label class="form-label" for="form3Example3">Email address</label>
+                  @error('email')
+                      <div class="text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
       
                 <!-- Password input -->
                 <div data-mdb-input-init class="form-outline mb-3">
-                  <input type="password" id="form3Example4" class="form-control form-control-lg" name="password" placeholder="Enter password" />
+                  <input type="password" id="form3Example4" class="form-control form-control-lg @error('password') is-invalid @enderror shadow-none" name="password" placeholder="Enter password" />
                   <label class="form-label" for="form3Example4">Password</label>
+                  @error('password')
+                      <div class="text-danger">{{ $message }}</div>
+                  @enderror
                 </div>
       
                

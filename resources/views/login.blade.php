@@ -20,7 +20,7 @@
             <img src="{{ asset('assets/img/logo.jpg') }}" alt="">
         </div>
         <div class="text-center mt-4 name">
-            Sistem Informasi Inventory <br>
+            Wawasan Tak Terbuka <br>
 
             @if(session('wrong'))
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -32,13 +32,19 @@
         </div>
         <form class="p-3 mt-3" method="post" action="/login" >
             @csrf
+            @error('email')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
             <div class="form-field d-flex align-items-center">
                 <span class="far fa-user"></span>
-                <input type="number" name="nip" id="nip" placeholder="NIP">
+                <input type="text" name="email" id="email" placeholder="Masukkan Email Anda">
             </div>
+            @error('password')
+                <div class="text-danger">{{ $message }}</div>
+            @enderror
             <div class="form-field d-flex align-items-center">
                 <span class="fas fa-key"></span>
-                <input type="password" name="password" id="pwd" placeholder="Password">
+                <input type="password" name="password" id="pwd" placeholder="Masukkan Password Anda">
             </div>
             <button type="submit" class="btn mt-3">Login</button>
         </form>

@@ -45,12 +45,15 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/daftar-isi', [KontenController::class, 'index_user']);
 
-Route::get('/dashboard', function () {
-    return view('pages/admin/dashboard');
+
+Route::group(['middleware' => 'cekrole:Admin'], function() {
+    Route::get('/dashboard', function () {
+        return view('pages/admin/dashboard');
+    });
+    Route::resource('/data-user', UserController::class)->names('data-user');
+    Route::resource('/konten', KontenController::class)->names('konten');
+    Route::resource('/detail-konten', DetailKontenController::class)->names('detail-konten');
 });
-Route::resource('/data-user', UserController::class)->names('data-user');
-Route::resource('/konten', KontenController::class)->names('konten');
-Route::resource('/detail-konten', DetailKontenController::class)->names('detail-konten');
 Route::resource('/layout', LayoutController::class)->names('layout');
 Route::resource('/layout1', Layout1Controller::class)->names('layout1');
 Route::resource('/layout2', Layout2Controller::class)->names('layout2');
