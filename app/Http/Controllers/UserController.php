@@ -91,4 +91,30 @@ class UserController extends Controller
             return redirect()->back()->with('error', 'Gagal Menghapus Data User');
         }
     }
+
+    public function register(Request $request) {
+        // dd($request);
+        $request->validate([
+           'nama' => 'required',
+           'email' => 'required|email|unique:users,email',
+           'password' => 'required',
+           'alamat' => 'required',
+           'telepon' => 'required|numeric|digits_between:12,15',
+       ]);
+
+       $user=new User();
+       $user->name=$request->nama;
+       $user->email=$request->email;
+       $user->no_telepon=$request->telepon;
+       $user->role='Mitra';
+       $user->password=Hash::make($request->password);
+       $user->address=$request->alamat;
+       $user->instansi=$request->instansi;
+
+       if ($user->save()) {
+           return redirect('/daftar-isi')->with("success","Data Berhasil Disimpan. Silahkan login pada Sistem !");
+       } else {
+           return redirect('/daftar-isi')->with("error","Gagal Menambahkan Data");
+       }
+   }
 }

@@ -26,6 +26,8 @@
   <!-- Main CSS File -->
   <link href="templateArsha/css/main.css" rel="stylesheet">
 
+  <title> Daftar Isi </title>
+
   <!-- =======================================================
   * Template Name: Arsha
   * Template URL: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/
@@ -38,6 +40,26 @@
 <body>
 
   <main class="main container-fluid">
+
+    <div class="row">
+        <div class="d-flex justify-content-center align-items-center">
+        <div class="col-8 mt-4">
+          @if (session()->has('success'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+              <i class="bi bi-check-circle me-1"></i>
+                {{ session('success') }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          @elseif (session()->has('error'))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <i class="bi bi-exclamation-octagon me-1"></i>
+                {{ session('error') }}
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          @endif
+        </div>
+      </div>
+    </div>
 
   @yield('konten')
 

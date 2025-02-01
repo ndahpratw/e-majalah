@@ -137,7 +137,7 @@
     <section class="grid-image">
         <div class="center-text">
             <h1 class="wawasan text-white fw-bold mb-0">Wawasan</h1>
-            <h1 class="pacifico-regular">Tak Terbatas</h1>
+            <h1 class="pacifico-regular">Tak Terbuka</h1>
             <a href="/daftar-isi" class="play">
                 <i class="bi bi-play-fill"></i>
             </a>

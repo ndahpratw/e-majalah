@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\KontenController;
 use App\Http\Controllers\LayoutController;
 use App\Http\Controllers\Layout1Controller;
@@ -27,12 +28,26 @@ Route::get('/', function () {
     return view('pages/user/index');
 });
 
-Route::get('/dashboard', function () {
-    return view('pages/admin/dashboard');
+
+Route::get('/login', function () {
+    return view('login');
 });
+Route::get('/login2', function () {
+    return view('login2');
+});
+Route::get('/register', function () {
+    return view('register');
+});
+
+Route::post('/register', [UserController::class, 'register']);
+Route::post('/login', [LoginController::class, 'login']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/daftar-isi', [KontenController::class, 'index_user']);
 
+Route::get('/dashboard', function () {
+    return view('pages/admin/dashboard');
+});
 Route::resource('/data-user', UserController::class)->names('data-user');
 Route::resource('/konten', KontenController::class)->names('konten');
 Route::resource('/detail-konten', DetailKontenController::class)->names('detail-konten');
