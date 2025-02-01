@@ -57,9 +57,34 @@
                           <tr>
                             <td> {{ $no++ }} </td>
                             <td> {{ $item->name }} </td>
-                            <td> {{ $item->email }} </td>
-                            <td> {{ $item->address }} </td>
-                            <td> {{ $item->no_telepon }} </td>
+                            <td>
+                              <a href="mailto:{{$item->email}}" target="_blank" class="text-primary"> <i class="bi bi-envelope"></i>  {{$item->email}}</a>
+                            </td>
+                            <td class="text-center">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#alamat{{$item->id}}"> <i class="bi bi-geo-alt-fill"></i> </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="alamat{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                  <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Alamat</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body text-center">
+                                          {{ $item->address }}
+                                        </div>
+                                        <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                        </div>
+                                    </div>
+                                  </div>
+                                </div>
+                            </td>
+                            <td>
+                              <a href="https://wa.me/{{$item->no_telepon}}" target="_blank" class="text-primary"> <i class="bi bi-whatsapp"></i>  {{$item->no_telepon}}</a>
+                            </td>
                             <td> 
                               @if($item->role == 'Admin')
                                   <span class="badge rounded-pill bg-info">{{ $item->role }}</span>
@@ -67,29 +92,35 @@
                                   <span class="badge rounded-pill bg-warning">{{ $item->role }}</span>
                               @endif
                             </td>   
-                            <td> {{ $item->instansi }} </td>   
+                            <td>
+                                @if ($item->instansi == null)
+                                    -
+                                @else
+                                  {{ $item->instansi }}
+                                @endif
+                            </td>   
                             <td>
                                 {{-- edit data --}}
-                                <a href="{{ route('data-user.edit' , $item->id) }}" class="btn btn-primary shadow-none"><i class="ri-pencil-fill"></i></a>
+                                <a href="{{ route('data-user.edit' , $item->id) }}" class="btn btn-sm btn-primary shadow-none"><i class="ri-pencil-fill"></i></a>
 
                                 {{-- hapus data --}}
-                                <button type="button" class="btn btn-danger shadow-none" data-bs-toggle="modal" data-bs-target="#hapus-data{{ $item->id }}"><i class="bi bi-trash"></i></button>
+                                <button type="button" class="btn btn-sm btn-danger shadow-none" data-bs-toggle="modal" data-bs-target="#hapus-data{{ $item->id }}"><i class="bi bi-trash"></i></button>
                                 <div class="modal fade" id="hapus-data{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                            <h5 class="modal-title"> Hapus Data </h5>
+                                            <h5 class="modal-title"> Konfirmasi Hapus Data User </h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body text-center">
-                                                <p style="color: black">Apakah anda yakin untuk menghapus data?</p>
+                                                <p style="color: black">Apakah anda yakin untuk menghapus data dari user <br> <b>{{ $item->name }}</b> ?</p>
                                             </div>
                                             <div class="modal-footer">
-                                                <button type="button" class="btn btn-secondary btn-sm shadow-none" data-bs-dismiss="modal">Tidak</button>
+                                                <button type="button" class="btn btn-secondary shadow-none" data-bs-dismiss="modal">Tidak</button>
                                                 <form action="{{ route('data-user.destroy', $item->id) }}" method="POST" style="display: inline;">
                                                     @method('delete')
                                                     @csrf
-                                                    <input type="submit" value="Hapus" class="btn btn-danger btn-sm shadow-none">
+                                                    <input type="submit" value="Iya" class="btn btn-danger shadow-none">
                                                 </form> 
                                             </div>
                                         </div>
