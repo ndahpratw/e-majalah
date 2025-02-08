@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             Layout4Seeder::class,
             Layout5Seeder::class,
             Layout6Seeder::class,
+            KomplainSeeder::class,
             PengajuanSeeder::class,
         ]);
     }

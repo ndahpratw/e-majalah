@@ -11,13 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('detail_kontens', function (Blueprint $table) {
+        Schema::create('pengajuans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_konten')->references('id')->on('kontens')->onDelete('cascade');
             $table->foreignId('id_mitra')->nullable()->references('id')->on('users')->onDelete('cascade');
             $table->string('judul');
             $table->string('sub_judul');
             $table->string('jenis_layout')->nullable();
+            $table->enum('status', ['Belum Diproses','Sedang Diproses', 'Ditolak', 'Selesai'])->nullable();
+            $table->enum('status_pembayaran', ['Belum Bayar','Sudah Bayar'])->nullable();
+            $table->string('bukti_pembayaran')->nullable();
+            $table->string('berkas')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('detail_kontens');
+        Schema::dropIfExists('pengajuans');
     }
 };

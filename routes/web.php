@@ -13,6 +13,7 @@ use App\Http\Controllers\Layout5Controller;
 use App\Http\Controllers\Layout6Controller;
 use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DetailKontenController;
+use App\Http\Controllers\PengajuanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -50,6 +51,7 @@ Route::get('/daftar-isi', [KontenController::class, 'index_user']);
 Route::group(['middleware' => 'cekrole:Admin,Mitra'], function() {
     Route::get('/dashboard', [LoginController::class, 'dashboard'])->name('dashboard');
     Route::resource('/komplain', ContactUsController::class)->names('komplain');
+    Route::resource('/pengajuan', PengajuanController::class)->names('pengajuan');
 });
 Route::group(['middleware' => 'cekrole:Admin'], function() {
     Route::resource('/data-user', UserController::class)->names('data-user');

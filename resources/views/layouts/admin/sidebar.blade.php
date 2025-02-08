@@ -32,7 +32,7 @@
 
     <!-- Nav -->
     <li class="nav-item">
-      <a href=" " class="nav-link collapsed">
+      <a href="/pengajuan" class="nav-link {{ Request::is('pengajuan*') ? '' : 'collapsed' }}">
         <i class="bi bi-person-hearts"></i>
         <span>Pengajuan</span>
       </a>

@@ -50,6 +50,9 @@
                                     <th>Topik</th>
                                     <th>Judul Konten</th>
                                     <th>Status</th>
+                                    @if (auth()->user()->role == 'Mitra')
+                                        <th></th>
+                                    @endif
                                 </tr>
                             </thead>
                             <tbody>
@@ -102,6 +105,33 @@
                                             @endif
                                         @endif
                                     </td>
+                                    @if (auth()->user()->role == 'Mitra')
+                                        <td>
+                                            {{-- hapus data --}}
+                                            <button type="button" class="btn btn-sm btn-danger shadow-none" data-bs-toggle="modal" data-bs-target="#hapus-data{{ $item->id }}"><i class="bi bi-trash"></i></button>
+                                            <div class="modal fade" id="hapus-data{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                        <h5 class="modal-title"> Konfirmasi Hapus Komplain </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body text-center">
+                                                            <p style="color: black">Apakah anda yakin untuk menghapus data tersebut ?</p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary shadow-none" data-bs-dismiss="modal">Tidak</button>
+                                                            <form action="{{ route('komplain.destroy', $item->id) }}" method="POST" style="display: inline;">
+                                                                @method('delete')
+                                                                @csrf
+                                                                <input type="submit" value="Iya" class="btn btn-danger shadow-none">
+                                                            </form> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>

@@ -12,6 +12,7 @@ class DetailKonten extends Model
 
     protected $table = 'detail_kontens';
     protected $fillable = [
+        'id_mitra',
         'judul',
         'sub_judul',
     ];
