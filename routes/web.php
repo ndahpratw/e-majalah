@@ -47,9 +47,7 @@ Route::get('/daftar-isi', [KontenController::class, 'index_user']);
 
 
 Route::group(['middleware' => 'cekrole:Admin'], function() {
-    Route::get('/dashboard', function () {
-        return view('pages/admin/dashboard');
-    });
+    Route::get('/dashboard', [LoginController::class, 'dashboard'])->name('dashboard');
     Route::resource('/data-user', UserController::class)->names('data-user');
     Route::resource('/konten', KontenController::class)->names('konten');
     Route::resource('/detail-konten', DetailKontenController::class)->names('detail-konten');

@@ -826,14 +826,24 @@ h6 {
 }
 
 .dashboard .revenue-card .card-icon {
-  color: #2eca6a;
-  background: #e0f8e9;
+  color: yellowgreen;
+  background-color: honeydew;
 }
 
 .dashboard .customers-card .card-icon {
   color: #ff771d;
   background: #ffecdf;
 }
+
+.dashboard .sending-card .card-icon {
+    color: #2eca6a;
+    background:#e0f8e9;
+  }
+
+  .dashboard .feedback-card .card-icon {
+    color: red;
+    background: #f8d7da;
+  }
 
 /* Activity */
 .dashboard .activity {

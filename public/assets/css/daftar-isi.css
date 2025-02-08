@@ -1,0 +1,112 @@
+.row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 1.2rem;
+}
+
+.column {
+    grid-column: span 3;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.section-title {
+    text-align: center;
+    padding-bottom: 60px;
+    position: relative;
+}
+
+.section-title h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.section-title h2:before {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 160px;
+    height: 1px;
+    background: gray;
+    left: 0;
+    right: 0;
+    bottom: 1px;
+    margin: auto;
+}
+
+.section-title h2::after {
+    content: "";
+    position: absolute;
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: sienna;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.image-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 3;
+    opacity: 0;
+    background-color: white;
+    color: black;
+    /* text-align: center; */
+    padding: 10px;
+    font-size: 14px;
+    transition: opacity 0.5s ease;
+}
+
+.image-container:hover .image-caption {
+    opacity: 1;
+    bottom: 0;
+}
+
+.image-caption h4 {
+    font-size: 18px;
+    font-weight: 600;
+    padding-right: 50px;
+}
+
+.image-caption p {
+    color: grey;
+    font-size: 14px;
+    margin-bottom: 0;
+    padding-right: 50px;
+}
+
+.image-caption .details-link {
+    position: absolute;
+    right: 14px;
+    font-size: 28px;
+    top: calc(50% - 14px);
+    color: black;
+    transition: 0.3s;
+    line-height: 0;
+}
+
+.image-caption .details-link:hover {
+    color: cyan;
+}

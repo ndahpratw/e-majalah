@@ -45,40 +45,20 @@
             </div>
         </div>
         <div class="row">
-    
+
             <!-- Card -->
-            <div class="col-xxl-3 col-md-6">
+            <div class="col-xxl-6 col-md-6">
               <div class="card info-card sales-card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Total </h5>
-
-                  <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-person-badge-fill"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6> </h6>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-            </div><!-- End Card -->
-
-            <!-- Card -->
-            <div class="col-xxl-3 col-md-6">
-              <div class="card info-card revenue-card">
-
-                <div class="card-body">
-                  <h5 class="card-title"> Total </h5>
+                  <h5 class="card-title">Admin</h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                         <i class="bi bi-people-fill"></i>
                     </div>
                     <div class="ps-3">
-                      <h6> </h6>
+                      <h6> {{ $admin }} </h6>
                     </div>
                   </div>
                 </div>
@@ -87,19 +67,42 @@
             </div><!-- End Card -->
 
             <!-- Card -->
-            <div class="col-xxl-3 col-md-6">
-
+            <div class="col-xxl-6 col-md-6">
               <div class="card info-card customers-card">
 
                 <div class="card-body">
-                  <h5 class="card-title"> Total </h5>
+                  <h5 class="card-title">Mitra</h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-person-badge-fill"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6> {{ $mitra }} </h6>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div><!-- End Card -->
+
+        </div>
+
+        <div class="row">
+            <!-- Card -->
+            <div class="col-xxl-4 col-md-6">
+
+              <div class="card info-card revenue-card">
+
+                <div class="card-body">
+                  <h5 class="card-title">Konten</h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                         <i class="bi bi-book"></i>
                     </div>
                     <div class="ps-3">
-                      <h6> </h6>
+                      <h6> {{ $konten }} </h6>
                     </div>
                   </div>
 
@@ -107,18 +110,40 @@
               </div>
 
             </div><!-- End Card -->
-            
-            <!-- Card -->
-            <div class="col-xxl-3 col-md-6">
 
-              <div class="card info-card customers-card">
+            <!-- Card -->
+            <div class="col-xxl-4 col-md-6">
+
+              <div class="card info-card sending-card">
 
                 <div class="card-body">
-                  <h5 class="card-title"> Total </h5>
+                  <h5 class="card-title">Pengajuan</h5>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bi bi-bookmark"></i>
+                        <i class="bi bi-clipboard2-plus-fill"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6></h6>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+            </div><!-- End Card -->
+
+            <!-- Card -->
+            <div class="col-xxl-4 col-md-6">
+
+              <div class="card info-card feedback-card">
+
+                <div class="card-body">
+                  <h5 class="card-title">Komplain</h5>
+
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-chat-left-text-fill"></i>
                     </div>
                     <div class="ps-3">
                       <h6> </h6>
@@ -129,7 +154,6 @@
               </div>
 
             </div><!-- End Card -->
-
-          </div>
+        </div>
     </section>
 @endsection
