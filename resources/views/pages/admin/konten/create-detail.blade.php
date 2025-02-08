@@ -58,13 +58,22 @@
                                     </div>
                                     <div class="carousel-inner">
                                       <div class="carousel-item active">
-                                        <img src="{{ asset('assets/img/foto6.png') }}" class="d-block w-75 mx-auto" alt="...">
+                                        <img src="{{ asset('assets/img/layout/layout 1.jpg') }}" class="d-block w-75 mx-auto" alt="...">
                                       </div>
-                                      <div class="carousel-item">
-                                        <img src="{{ asset('assets/img/foto6.png') }}" class="d-block w-75 mx-auto" alt="...">
+                                      <div class="carousel-item active">
+                                        <img src="{{ asset('assets/img/layout/layout 2.jpg') }}" class="d-block w-75 mx-auto" alt="...">
                                       </div>
-                                      <div class="carousel-item">
-                                        <img src="{{ asset('assets/img/foto6.png') }}" class="d-block w-75 mx-auto" alt="...">
+                                      <div class="carousel-item active">
+                                        <img src="{{ asset('assets/img/layout/layout 3.jpg') }}" class="d-block w-75 mx-auto" alt="...">
+                                      </div>
+                                      <div class="carousel-item active">
+                                        <img src="{{ asset('assets/img/layout/layout 4.jpg') }}" class="d-block w-75 mx-auto" alt="...">
+                                      </div>
+                                      <div class="carousel-item active">
+                                        <img src="{{ asset('assets/img/layout/layout 5.jpg') }}" class="d-block w-75 mx-auto" alt="...">
+                                      </div>
+                                      <div class="carousel-item active">
+                                        <img src="{{ asset('assets/img/layout/layout 6.jpg') }}" class="d-block w-75 mx-auto" alt="...">
                                       </div>
                                     </div>
                                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
