@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             UserSeeder::class,
-            PengajuanSeeder::class,
             KontenSeeder::class,
             DetailKontenSeeder::class,
             Layout1Seeder::class,
@@ -30,6 +29,7 @@ class DatabaseSeeder extends Seeder
             Layout4Seeder::class,
             Layout5Seeder::class,
             Layout6Seeder::class,
+            PengajuanSeeder::class,
         ]);
     }
 }

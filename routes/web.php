@@ -11,6 +11,7 @@ use App\Http\Controllers\Layout3Controller;
 use App\Http\Controllers\Layout4Controller;
 use App\Http\Controllers\Layout5Controller;
 use App\Http\Controllers\Layout6Controller;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\DetailKontenController;
 
 /*
@@ -46,8 +47,11 @@ Route::get('/logout', [LoginController::class, 'logout']);
 Route::get('/daftar-isi', [KontenController::class, 'index_user']);
 
 
-Route::group(['middleware' => 'cekrole:Admin'], function() {
+Route::group(['middleware' => 'cekrole:Admin,Mitra'], function() {
     Route::get('/dashboard', [LoginController::class, 'dashboard'])->name('dashboard');
+    Route::resource('/komplain', ContactUsController::class)->names('komplain');
+});
+Route::group(['middleware' => 'cekrole:Admin'], function() {
     Route::resource('/data-user', UserController::class)->names('data-user');
     Route::resource('/konten', KontenController::class)->names('konten');
     Route::resource('/detail-konten', DetailKontenController::class)->names('detail-konten');
@@ -59,3 +63,4 @@ Route::resource('/layout3', Layout3Controller::class)->names('layout3');
 Route::resource('/layout4', Layout4Controller::class)->names('layout4');
 Route::resource('/layout5', Layout5Controller::class)->names('layout5');
 Route::resource('/layout6', Layout6Controller::class)->names('layout6');
+

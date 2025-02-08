@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('contact_us', function (Blueprint $table) {
             $table->id();
             $table->foreignId('id_mitra')->constrained('users')->onDelete('cascade');
+            $table->foreignId('id_detail_konten')->constrained('detail_kontens')->onDelete('cascade');
             $table->string('catatan');
+            $table->enum('status', ['Belum Terbaca', 'Dihiraukan', 'Proses', 'Selesai']);
             $table->timestamps();
         });
     }

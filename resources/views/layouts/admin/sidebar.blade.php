@@ -11,21 +11,24 @@
       </a>
     </li><!-- End Dashboard Nav -->
 
-    <!-- Nav -->
-    <li class="nav-item">
-      <a href="{{ url('/data-user') }}" class="nav-link {{ Request::is('data-user*') ? '' : 'collapsed' }}">
-        <i class="bi bi-people-fill"></i>
-        <span>Pengguna</span>
-      </a>
-    </li><!-- End Nav -->
+    @if (auth()->user()->role=='Admin')        
+      <!-- Nav -->
+      <li class="nav-item">
+        <a href="{{ url('/data-user') }}" class="nav-link {{ Request::is('data-user*') ? '' : 'collapsed' }}">
+          <i class="bi bi-people-fill"></i>
+          <span>Pengguna</span>
+        </a>
+      </li><!-- End Nav -->
 
-    <!-- Nav -->
-    <li class="nav-item">
-      <a href="{{ url('/konten') }}" class="nav-link {{ Request::is('konten*') | Request::is('layout1*') | Request::is('layout2*') | Request::is('layout3*') | Request::is('layout4*') | Request::is('layout5*') | Request::is('layout6*') | Request::is('detail-konten*') ?  '' : 'collapsed' }}">
-        <i class="bi bi-folder-fill"></i>
-        <span>Konten</span>
-      </a>
-    </li><!-- End Nav -->
+      <!-- Nav -->
+      <li class="nav-item">
+        <a href="{{ url('/konten') }}" class="nav-link {{ Request::is('konten*') | Request::is('layout1*') | Request::is('layout2*') | Request::is('layout3*') | Request::is('layout4*') | Request::is('layout5*') | Request::is('layout6*') | Request::is('detail-konten*') ?  '' : 'collapsed' }}">
+          <i class="bi bi-folder-fill"></i>
+          <span>Konten</span>
+        </a>
+      </li><!-- End Nav -->
+
+    @endif
 
     <!-- Nav -->
     <li class="nav-item">
@@ -37,9 +40,9 @@
 
     <!-- Nav -->
     <li class="nav-item">
-      <a href=" " class="nav-link collapsed">
+      <a href="/komplain" class="nav-link {{ Request::is('komplain*') ? '' : 'collapsed' }}">
         <i class="bi bi-display-fill"></i>
-        <span>Berita</span>
+        <span>Komplain</span>
       </a>
     </li><!-- End Nav -->
 

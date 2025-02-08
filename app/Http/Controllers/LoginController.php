@@ -26,7 +26,7 @@ class LoginController extends Controller
             if ($user->role === 'Admin') {
                 return redirect('/dashboard')->with('success', 'Selamat Datang di Sistem');
             } else if ($user->role === 'Mitra') {
-                return redirect('/daftar-isi')->with('success', 'Selamat Datang di Sistem');
+                return redirect('/dashboard')->with('success', 'Selamat Datang di Sistem');
             } else {
                 return redirect('/login')->with('wrong', 'Role tidak Ditemukan !');
             }
