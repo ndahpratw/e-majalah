@@ -11,8 +11,9 @@ class ContactUsController extends Controller
     public function index() {
         $no = 1;
         // Mengambil data contact_us terbaru berdasarkan created_at (dari yang terbaru ke yang lama)
+        $komplain = ContactUs::all();
         $contact_us = ContactUs::orderBy('created_at', 'desc')->where('id_mitra',auth()->user()->id)->get();
-        return view('pages.admin.komplain.index', compact('no', 'contact_us'));
+        return view('pages.admin.komplain.index', compact('no', 'komplain', 'contact_us'));
     }
 
     public function update(Request $request, $id) {
@@ -55,9 +56,9 @@ class ContactUsController extends Controller
    public function destroy($id) {
         $data = ContactUs::find($id);
         if ($data->delete()){
-            return redirect()->back()->with("success","Data User Berhasil Dihapus");
+            return redirect()->back()->with("success","Data Komplain Berhasil Dihapus");
         } else {
-            return redirect()->back()->with('error', 'Gagal Menghapus Data User');
+            return redirect()->back()->with('error', 'Gagal Menghapus Data Komplain');
     }
     }
     
