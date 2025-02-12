@@ -181,7 +181,7 @@
                                             @if($item->status == 'Belum Terbaca')
                                                 <span class="badge rounded-pill bg-danger">{{ $item->status }}</span>
                                             @elseif($item->status == 'Dihiraukan')
-                                                <span class="badge rounded-pill bg-secodary">{{ $item->status }}</span>
+                                                <span class="badge rounded-pill bg-secondary">{{ $item->status }}</span>
                                             @elseif($item->status == 'Proses')
                                                 <span class="badge rounded-pill bg-warning">{{ $item->status }}</span>
                                             @elseif($item->status == 'Selesai')

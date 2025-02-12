@@ -23,14 +23,14 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-12 mt-1">
-                            <label for="judul" class="form-label">Jenis Konten</label>
-                            <select id="judul" name="judul" class="form-select @error('judul') is-invalid @enderror shadow-none">
+                            <label for="konten" class="form-label">Jenis Konten</label>
+                            <select id="konten" name="konten" class="form-select @error('konten') is-invalid @enderror shadow-none">
                               <option value="" selected disabled> Pilih Konten </option>
                               @foreach ($konten as $item)
-                                <option value="{{ $item->id }}" {{ old('detail_konten') == $item->id ? 'selected' : '' }}>{{ $item->topik }}</option>
+                                <option value="{{ $item->id }}" {{ old('konten') == $item->id ? 'selected' : '' }}>{{ $item->topik }}</option>
                               @endforeach
                           </select>
-                            @error('judul')
+                            @error('konten')
                                 <div class="text-danger">{{ $message }}</div>
                             @enderror
                           </div>

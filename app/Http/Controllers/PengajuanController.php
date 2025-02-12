@@ -13,12 +13,10 @@ class PengajuanController extends Controller
      */
     public function index()
     {
-        if (auth()->user()->role=='Admin') {
-            $pengajuan = Pengajuan::all();
-        } else {
-            $pengajuan = Pengajuan::where('id_mitra', auth()->user()->id);
-        }
-        return view('pages.admin.pengajuan.index', compact('pengajuan'));
+        $no = 1;
+        $data_pengajuan = Pengajuan::all();
+        $pengajuan = Pengajuan::where('id_mitra', auth()->user()->id)->get();
+        return view('pages.admin.pengajuan.index', compact('no','data_pengajuan','pengajuan'));
     }
 
     /**
@@ -35,7 +33,26 @@ class PengajuanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // dd($request);
+        $request->validate([
+            'konten' => 'required',
+            'judul' => 'required|unique:detail_kontens,judul',
+            'sub_judul' => 'required',
+            'layout' => 'required',
+        ]);
+
+        $pengajuan = new Pengajuan();
+        $pengajuan->id_konten = $request->konten;
+        $pengajuan->id_mitra = auth()->user()->id;
+        $pengajuan->judul = $request->judul;
+        $pengajuan->sub_judul = $request->sub_judul;
+        $pengajuan->jenis_layout = $request->layout;
+        $pengajuan->status = 'Belum Diproses';
+        if ($pengajuan->save()) {
+            return redirect()->route('pengajuan.index')->with('success', 'Berhasil Menambahkan Data Pengajuan');
+        } else {
+            return redirect()->route('pengajuan.index')->with('error', 'Gagal menambahkan data');
+        }
     }
 
     /**
@@ -65,8 +82,13 @@ class PengajuanController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Pengajuan $pengajuan)
+    public function destroy($id)
     {
-        //
+        $data = Pengajuan::find($id);
+        if ($data->delete()){
+            return redirect()->back()->with("success","Berhasil Menghapus Data Pengajuan");
+        } else {
+            return redirect()->back()->with('error', 'Gagal Menghapus Data Pengajuan');
+        }
     }
 }
