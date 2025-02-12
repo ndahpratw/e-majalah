@@ -14,17 +14,12 @@
 
         <li class="nav-item dropdown pe-3">
 
-          {{-- <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            @if (auth()->user()->jenis_kelamin == 'L')
-              <img src="{{ asset('assets/img/profile laki.jpg') }}" alt="Profile" class="rounded-circle">
-            @else
-              <img src="{{ asset('assets/img/profile perempuan.jpg') }}" alt="Profile" class="rounded-circle">
-            @endif
-            <span class="d-none d-md-block dropdown-toggle ps-2">{{ auth()->user()->nama }}</span>
-          </a><!-- End Profile Iamge Icon --> --}}
-
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{{ asset('assets/img/profile.jpg') }}" alt="Profile" class="rounded-circle">
+            @if (auth()->user()->role == 'Admin')
+              <img src="{{ asset('assets/img/admin.jpg') }}" alt="Profile" class="rounded-circle">
+            @elseif (auth()->user()->role == 'Mitra')
+              <img src="{{ asset('assets/img/mitra.jpg') }}" alt="Profile" class="rounded-circle">
+            @endif
             <span class="d-none d-md-block dropdown-toggle ps-2">{{ auth()->user()->name }}</span>
           </a><!-- End Profile Iamge Icon -->
 

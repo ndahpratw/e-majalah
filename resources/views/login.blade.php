@@ -44,7 +44,7 @@
               
                             <!-- Email input -->
                             <div data-mdb-input-init class="form-outline mb-4">
-                            <input type="email" id="form3Example3" class="form-control form-control-lg @error('email') is-invalid @enderror shadow-none" name="email" placeholder="Enter a valid email address" />
+                            <input type="email" id="form3Example3" class="form-control form-control-lg @error('email') is-invalid @enderror shadow-none" name="email" placeholder="Enter a email address" />
                             <label class="form-label" for="form3Example3">Email address</label>
                             @error('email')
                                 <div class="text-danger">{{ $message }}</div>
