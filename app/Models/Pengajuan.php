@@ -11,6 +11,19 @@ class Pengajuan extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'id_konten',
+        'id_mitra',
+        'judul',
+        'sub_judul',
+        'jenis_layout',
+        'status',
+        'status_pembayaran',
+        'bukti_pembayaran',
+        'berkas',
+        'keterangan',
+    ];
+
     public function konten()
     {
         return $this->belongsTo(Konten::class, 'id_konten');

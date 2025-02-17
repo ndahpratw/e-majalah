@@ -72,7 +72,7 @@
                                                 <td>{{ $item->catatan }}</td>
                                                 <td>{{ $item->detail_konten->konten->topik }}</td>
                                                 <td>
-                                                <a href="{{ route('detail-konten.edit',$item->detail_konten->id) }}" class="text-dark"><u>{{ $item->detail_konten->judul }}<i class="bi bi-arrow-up-right-circle"></i></u></a>
+                                                <a href="{{ route('layout.show',$item->detail_konten->id) }}" class="text-dark"><u>{{ $item->detail_konten->judul }}<i class="bi bi-arrow-up-right-circle"></i></u></a>
                                                 </td>
                                                 <td>
                                                     <form action="{{ route('komplain.update', $item->id) }}" method="POST" id="form-status-{{ $item->id }}">
@@ -144,7 +144,7 @@
                                         <div class="d-flex justify-content-between align-items-center">
                                             <div>
                                                 <h5 class="card-title">Topik : {{ $item->detail_konten->konten->topik }}</h5>
-                                                <a href="{{ route('detail-konten.edit',$item->detail_konten->id) }}" class="text-dark"><u>{{ $item->detail_konten->judul }}<i class="bi bi-arrow-up-right-circle"></i></u></a>
+                                                <a href="{{ route('layout.show',$item->detail_konten->id) }}" class="text-dark"><u>{{ $item->detail_konten->judul }}<i class="bi bi-arrow-up-right-circle"></i></u></a>
                                             </div>
                                             <div class="d-flex gap-2">
                                                 {{-- hapus data --}}

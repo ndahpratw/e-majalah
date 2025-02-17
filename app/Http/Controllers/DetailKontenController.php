@@ -43,12 +43,17 @@ class DetailKontenController extends Controller
             'layout' => 'required',
         ]);
 
+        $data = Pengajuan::where('judul', $request->judul)->firstOrFail();
+        $data->update([
+            'status' => 'Selesai',
+        ]);
+
         $detail_konten = new DetailKonten();
         $detail_konten->id_konten = $request->id_konten;
         $detail_konten->judul = $request->judul;
         $detail_konten->sub_judul = $request->sub_judul;
         $detail_konten->jenis_layout = $request->layout;
-        if ($detail_konten->save()) {
+        if ($detail_konten->save() && $data->save()) {
             if ($request->layout == 'Layout 1') {
                 return redirect()->route('layout1.show', $detail_konten->id)->with('success','Informasi detail konten berhasil ditambahkan');
             } elseif ($request->layout == 'Layout 2') {
@@ -105,7 +110,6 @@ class DetailKontenController extends Controller
             $layout = Layout6::where('id_detail_konten',$id)->first();
             return view('pages.admin.layout.layout6-edit', compact('data','layout'));
         }
-        
     }
 
     /**

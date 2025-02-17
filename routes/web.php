@@ -49,13 +49,20 @@ Route::get('/daftar-isi', [KontenController::class, 'index_user']);
 Route::group(['middleware' => 'cekrole:Admin,Mitra'], function() {
     Route::get('/dashboard', [LoginController::class, 'dashboard'])->name('dashboard');
     Route::resource('/komplain', ContactUsController::class)->names('komplain');
+    
+    Route::resource('/detail-konten', DetailKontenController::class)->names('detail-konten');
+
     Route::resource('/pengajuan', PengajuanController::class)->names('pengajuan');
+    Route::put('/pengajuan/admineditstatus/{id}', [PengajuanController::class, 'admineditstatus'])->name('pengajuan.admineditstatus');
+    Route::put('/pengajuan/admineditbuktibayar/{id}', [PengajuanController::class, 'admineditbuktibayar'])->name('pengajuan.admineditbuktibayar');
+    Route::put('/pengajuan/admineditvalidasipembayaran/{id}', [PengajuanController::class, 'admineditvalidasipembayaran'])->name('pengajuan.admineditvalidasipembayaran');
 });
 Route::group(['middleware' => 'cekrole:Admin'], function() {
     Route::resource('/data-user', UserController::class)->names('data-user');
     Route::resource('/konten', KontenController::class)->names('konten');
-    Route::resource('/detail-konten', DetailKontenController::class)->names('detail-konten');
+    Route::put('/pengajuan/{id}/update-status', [PengajuanController::class, 'updateStatus'])->name('pengajuan.admineditstatus');
 });
+Route::get('/layout/carijudul/{judul}', [LayoutController::class,'carijudul'])->name('layout.carijudul');
 Route::resource('/layout', LayoutController::class)->names('layout');
 Route::resource('/layout1', Layout1Controller::class)->names('layout1');
 Route::resource('/layout2', Layout2Controller::class)->names('layout2');

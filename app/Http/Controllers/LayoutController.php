@@ -73,6 +73,38 @@ class LayoutController extends Controller
         }
     }
 
+    public function carijudul($judul)
+    {
+        $data_pengajuan = DetailKonten::where('judul', $judul)->firstOrFail();
+        if (Layout1::where('id_detail_konten', $data_pengajuan->id)->exists()) {
+            $data = DetailKonten::findOrFail($data_pengajuan->id);
+            $isi = Layout1::where('id_detail_konten', $data_pengajuan->id)->first();
+            return view('pages.user.layout-majalah.layout1', compact('data','isi'));
+        } elseif (Layout2::where('id_detail_konten', $data_pengajuan->id)->exists()) {
+            $data = DetailKonten::findOrFail($data_pengajuan->id);
+            $isi = Layout2::where('id_detail_konten',$data_pengajuan->id)->first();
+            return view('pages.user.layout-majalah.layout2', compact('data','isi'));
+        } elseif (Layout3::where('id_detail_konten', $data_pengajuan->id)->exists()) {
+            $data = DetailKonten::findOrFail($data_pengajuan->id);
+            $isi = Layout3::where('id_detail_konten',$data_pengajuan->id)->first();
+            return view('pages.user.layout-majalah.layout3', compact('data','isi'));
+        } elseif (Layout4::where('id_detail_konten', $data_pengajuan->id)->exists()) {
+            $data = DetailKonten::findOrFail($data_pengajuan->id);
+            $isi = Layout4::where('id_detail_konten',$data_pengajuan->id)->first();
+            return view('pages.user.layout-majalah.layout4', compact('data','isi'));
+        } elseif (Layout5::where('id_detail_konten', $data_pengajuan->id)->exists()) {
+            $data = DetailKonten::findOrFail($data_pengajuan->id);
+            $isi = Layout5::where('id_detail_konten',$data_pengajuan->id)->first();
+            return view('pages.user.layout-majalah.layout5', compact('data','isi'));
+        } elseif (Layout6::where('id_detail_konten', $data_pengajuan->id)->exists()) {
+            $data = DetailKonten::findOrFail($data_pengajuan->id);
+            $isi = Layout6::where('id_detail_konten',$data_pengajuan->id)->first();
+            return view('pages.user.layout-majalah.layout6', compact('data','isi'));
+        } else {
+            return "not found";
+        }
+    }
+
     /**
      * Show the form for editing the specified resource.
      */

@@ -19,9 +19,10 @@ return new class extends Migration
             $table->string('sub_judul');
             $table->string('jenis_layout')->nullable();
             $table->enum('status', ['Belum Diproses','Sedang Diproses', 'Ditolak', 'Selesai'])->nullable();
-            $table->enum('status_pembayaran', ['Belum Bayar','Sudah Bayar'])->nullable();
+            $table->enum('status_pembayaran', ['Belum Bayar','Menunggu Konfirmasi','Lunas'])->nullable();
             $table->string('bukti_pembayaran')->nullable();
             $table->string('berkas')->nullable();
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }
