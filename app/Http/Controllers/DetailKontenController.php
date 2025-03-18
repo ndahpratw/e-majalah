@@ -10,6 +10,7 @@ use App\Models\Layout4;
 use App\Models\Layout5;
 use App\Models\Layout6;
 use App\Models\DetailKonten;
+use App\Models\Pengajuan;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
