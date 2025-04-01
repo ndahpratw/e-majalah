@@ -53,172 +53,180 @@
                         </div>
                     @endif
 
-                    @if (auth()->user()->role == 'Admin')                        
-                        <div class="table-responsive">
-                            <table class="table datatable" id="user">
-                                <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Nama</th>
-                                        <th>Asal Instansi</th>
-                                        <th>Topik</th>
-                                        <th>Judul</th>
-                                        <th>Sub Judul</th>
-                                        <th>Layout</th>
-                                        <th>Status</th>
-                                        <th>Status Pembayaran</th>
-                                        <th>Bukti</th>
-                                        <th>Berkas</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($data_pengajuan as $item)
-                                    <tr class="text-center">
-                                        <td>{{ $no++ }}</td>
-                                        <td>{{ $item->mitra->name }}</td>
-                                        <td>
-                                            @if ($item->mitra->instansi == null)
-                                                -
-                                            @else
-                                               {{ $item->mitra->instansi }} 
-                                            @endif
-                                        </td>
-                                        <td>{{ $item->konten->topik }}</td>
-                                        <td>{{ $item->judul }}</td>
-                                        <td>{{ $item->sub_judul }}</td>
-                                        <td>{{ $item->jenis_layout }}</td>
-                                        <td>
-                                        <form action="{{ route('pengajuan.admineditstatus', $item->id) }}" method="POST" id="form-status-{{ $item->id }}">
-                                            @csrf
-                                            @method('PUT')
-                                            <!-- @if($item->status == 'Belum Diproses')
-                                                <select class="form-select status-dropdown fw-semibold bg-secondary text-light w-auto" name="status" onchange="document.getElementById('form-status-{{ $item->id }}').submit()">
-                                            @elseif($item->status == 'Sedang Diproses')
-                                                <select class="form-select status-dropdown fw-semibold bg-warning text-light w-auto" name="status" onchange="document.getElementById('form-status-{{ $item->id }}').submit()">
-                                            @elseif($item->status == 'Ditolak')
-                                                <select class="form-select status-dropdown fw-semibold bg-danger text-light w-auto" name="status" onchange="document.getElementById('form-status-{{ $item->id }}').submit()">
-                                            @elseif($item->status == 'Selesai')
-                                                <select class="form-select status-dropdown fw-semibold bg-success text-light w-auto" name="status" onchange="document.getElementById('form-status-{{ $item->id }}').submit()">
-                                            @endif -->
-                                            @if($item->status == 'Belum Diproses')
-                                                <select class="form-select status-dropdown fw-semibold bg-secondary text-light w-auto" name="status" id="status-{{ $item->id }}" onchange="handleStatusChange('{{ $item->id }}')">
-                                            @elseif($item->status == 'Sedang Diproses')
-                                                <select class="form-select status-dropdown fw-semibold bg-warning text-light w-auto" name="status" id="status-{{ $item->id }}" onchange="handleStatusChange('{{ $item->id }}')">
-                                            @elseif($item->status == 'Ditolak')
-                                                <select class="form-select status-dropdown fw-semibold bg-danger text-light w-auto" name="status" id="status-{{ $item->id }}" onchange="handleStatusChange('{{ $item->id }}')">
-                                            @elseif($item->status == 'Selesai')
-                                                <select class="form-select status-dropdown fw-semibold bg-success text-light w-auto" name="status" id="status-{{ $item->id }}" onchange="handleStatusChange('{{ $item->id }}')">
-                                            @endif
-                                                <option value="Belum Diproses" {{ $item->status == 'Belum Diproses' ? 'selected' : '' }}>
-                                                    Belum Diproses
-                                                </option>
-                                                <option value="Sedang Diproses" {{ $item->status == 'Sedang Diproses' ? 'selected' : '' }}>
-                                                    Sedang Diproses
-                                                </option>
-                                                <option value="Ditolak" {{ $item->status == 'Ditolak' ? 'selected' : '' }}>
-                                                    Ditolak
-                                                </option>
-                                                <option value="Selesai" {{ $item->status == 'Selesai' ? 'selected' : '' }}>
-                                                    Selesai
-                                                </option>
-                                            </select>
-
-                                            @if($item->status == 'Ditolak')
-                                                <i class="text-danger">{{$item->keterangan}}</i>
-                                            @endif
-
-                                            <!-- Dropdown Faktor Penolakan -->
-                                            <div id="reason-container-{{ $item->id }}" style="display: none; margin-top: 10px;">
-                                                <label for="reason-{{ $item->id }}" class="fw-semibold">Alasan Penolakan:</label>
-                                                <select class="form-select w-auto" name="keterangan" id="reason-{{ $item->id }}">
-                                                    <option value="">Pilih alasan</option>
-                                                    <option value="Dokumen tidak lengkap">Dokumen tidak lengkap</option>
-                                                    <option value="Tidak memenuhi syarat">Tidak memenuhi syarat</option>
-                                                    <option value="Lainnya">Lainnya</option>
+                    @if (auth()->user()->role == 'Admin')
+                        @if(count($pengajuan))                        
+                            <div class="table-responsive">
+                                <table class="table datatable" id="user">
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Nama</th>
+                                            <th>Asal Instansi</th>
+                                            <th>Topik</th>
+                                            <th>Judul</th>
+                                            <th>Sub Judul</th>
+                                            <th>Layout</th>
+                                            <th>Status</th>
+                                            <th>Status Pembayaran</th>
+                                            <th>Bukti</th>
+                                            <th>Berkas</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($data_pengajuan as $item)
+                                        <tr class="text-center">
+                                            <td>{{ $no++ }}</td>
+                                            <td>{{ $item->mitra->name }}</td>
+                                            <td>
+                                                @if ($item->mitra->instansi == null)
+                                                    -
+                                                @else
+                                                {{ $item->mitra->instansi }} 
+                                                @endif
+                                            </td>
+                                            <td>{{ $item->konten->topik }}</td>
+                                            <td>{{ $item->judul }}</td>
+                                            <td>{{ $item->sub_judul }}</td>
+                                            <td>{{ $item->jenis_layout }}</td>
+                                            <td>
+                                            <form action="{{ route('pengajuan.admineditstatus', $item->id) }}" method="POST" id="form-status-{{ $item->id }}">
+                                                @csrf
+                                                @method('PUT')
+                                                <!-- @if($item->status == 'Belum Diproses')
+                                                    <select class="form-select status-dropdown fw-semibold bg-secondary text-light w-auto" name="status" onchange="document.getElementById('form-status-{{ $item->id }}').submit()">
+                                                @elseif($item->status == 'Sedang Diproses')
+                                                    <select class="form-select status-dropdown fw-semibold bg-warning text-light w-auto" name="status" onchange="document.getElementById('form-status-{{ $item->id }}').submit()">
+                                                @elseif($item->status == 'Ditolak')
+                                                    <select class="form-select status-dropdown fw-semibold bg-danger text-light w-auto" name="status" onchange="document.getElementById('form-status-{{ $item->id }}').submit()">
+                                                @elseif($item->status == 'Selesai')
+                                                    <select class="form-select status-dropdown fw-semibold bg-success text-light w-auto" name="status" onchange="document.getElementById('form-status-{{ $item->id }}').submit()">
+                                                @endif -->
+                                                @if($item->status == 'Belum Diproses')
+                                                    <select class="form-select status-dropdown fw-semibold bg-secondary text-light w-auto" name="status" id="status-{{ $item->id }}" onchange="handleStatusChange('{{ $item->id }}')">
+                                                @elseif($item->status == 'Sedang Diproses')
+                                                    <select class="form-select status-dropdown fw-semibold bg-warning text-light w-auto" name="status" id="status-{{ $item->id }}" onchange="handleStatusChange('{{ $item->id }}')">
+                                                @elseif($item->status == 'Ditolak')
+                                                    <select class="form-select status-dropdown fw-semibold bg-danger text-light w-auto" name="status" id="status-{{ $item->id }}" onchange="handleStatusChange('{{ $item->id }}')">
+                                                @elseif($item->status == 'Selesai')
+                                                    <select class="form-select status-dropdown fw-semibold bg-success text-light w-auto" name="status" id="status-{{ $item->id }}" onchange="handleStatusChange('{{ $item->id }}')">
+                                                @endif
+                                                    <option value="Belum Diproses" {{ $item->status == 'Belum Diproses' ? 'selected' : '' }}>
+                                                        Belum Diproses
+                                                    </option>
+                                                    <option value="Sedang Diproses" {{ $item->status == 'Sedang Diproses' ? 'selected' : '' }}>
+                                                        Sedang Diproses
+                                                    </option>
+                                                    <option value="Ditolak" {{ $item->status == 'Ditolak' ? 'selected' : '' }}>
+                                                        Ditolak
+                                                    </option>
+                                                    <option value="Selesai" {{ $item->status == 'Selesai' ? 'selected' : '' }}>
+                                                        Selesai
+                                                    </option>
                                                 </select>
-                                            </div>
 
-                                            <!-- Tombol Submit -->
-                                            <button type="submit" id="submit-btn-{{ $item->id }}" class="btn btn-danger mt-2" style="display: none;">
-                                                Simpan Status
-                                            </button>
+                                                @if($item->status == 'Ditolak')
+                                                    <i class="text-danger">{{$item->keterangan}}</i>
+                                                @endif
 
-                                        </form>
-                                        </td>
-                                        <td>
-                                            @if ($item->status_pembayaran == null)
-                                                <i class="bi bi-x-square text-danger fs-4"></i>
-                                            @elseif ($item->status_pembayaran == 'Belum Bayar')
-                                                <span class="badge rounded-pill bg-danger">{{ $item->status_pembayaran }}</span>
-                                            @elseif ($item->status_pembayaran == 'Menunggu Konfirmasi')
-                                                <span class="badge rounded-pill bg-warning">{{ $item->status_pembayaran }}</span>
-                                            @elseif ($item->status_pembayaran == 'Lunas')
-                                                <span class="badge rounded-pill bg-success">{{ $item->status_pembayaran }}</span>
-                                            @endif
-                                        </td>
-                                        <td> 
-                                            @if ($item->bukti_pembayaran == null)
-                                                <i class="bi bi-x-square text-danger fs-4"></i>
-                                            @else
-                                                <a href="" class="text-dark" data-bs-toggle="modal" data-bs-target="#lihatbuktibayar{{$item->id}}"> 
-                                                    <i class="bi bi-search fs-4"></i>
-                                                </a>
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="lihatbuktibayar{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                <form action="{{ route('pengajuan.admineditvalidasipembayaran', $item->id) }}" method="POST" id="form-status-{{ $item->id }}" enctype="multipart/form-data"> 
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Bukti Pembayaran Pengajuan {{$item->id}}</h1>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <img src="{{ asset('assets/img/buktibayar/'. $item->bukti_pembayaran) }}" class="img-fluid" style="width: 100%" alt="">
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            @if ($item->status_pembayaran == 'Menunggu Konfirmasi')
-                                                                <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Validasi Pembayaran</button>
-                                                            @endif
-                                                        </div>
-                                                    </div>
-                                                </form>
+                                                <!-- Dropdown Faktor Penolakan -->
+                                                <div id="reason-container-{{ $item->id }}" style="display: none; margin-top: 10px;">
+                                                    <label for="reason-{{ $item->id }}" class="fw-semibold">Alasan Penolakan:</label>
+                                                    <select class="form-select w-auto" name="keterangan" id="reason-{{ $item->id }}">
+                                                        <option value="">Pilih alasan</option>
+                                                        <option value="Dokumen tidak lengkap">Dokumen tidak lengkap</option>
+                                                        <option value="Tidak memenuhi syarat">Tidak memenuhi syarat</option>
+                                                        <option value="Lainnya">Lainnya</option>
+                                                    </select>
                                                 </div>
-                                                </div>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($item->berkas == null)
-                                                <i class="bi bi-x-square text-danger fs-4"></i>
-                                            @else
-                                                <a href="" class="text-dark" data-bs-toggle="modal" data-bs-target="#lihatberkas{{$item->id}}"> 
-                                                    <i class="bi bi-search fs-4"></i>
-                                                </a>
-                                                <!-- Modal -->
-                                                <div class="modal fade" id="lihatberkas{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header">
-                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Berkas Pengajuan {{$item->id}}</h1>
+
+                                                <!-- Tombol Submit -->
+                                                <button type="submit" id="submit-btn-{{ $item->id }}" class="btn btn-danger mt-2" style="display: none;">
+                                                    Simpan Status
+                                                </button>
+
+                                            </form>
+                                            </td>
+                                            <td>
+                                                @if ($item->status_pembayaran == null)
+                                                    <i class="bi bi-x-square text-danger fs-4"></i>
+                                                @elseif ($item->status_pembayaran == 'Belum Bayar')
+                                                    <span class="badge rounded-pill bg-danger">{{ $item->status_pembayaran }}</span>
+                                                @elseif ($item->status_pembayaran == 'Menunggu Konfirmasi')
+                                                    <span class="badge rounded-pill bg-warning">{{ $item->status_pembayaran }}</span>
+                                                @elseif ($item->status_pembayaran == 'Lunas')
+                                                    <span class="badge rounded-pill bg-success">{{ $item->status_pembayaran }}</span>
+                                                @endif
+                                            </td>
+                                            <td> 
+                                                @if ($item->bukti_pembayaran == null)
+                                                    <i class="bi bi-x-square text-danger fs-4"></i>
+                                                @else
+                                                    <a href="" class="text-dark" data-bs-toggle="modal" data-bs-target="#lihatbuktibayar{{$item->id}}"> 
+                                                        <i class="bi bi-search fs-4"></i>
+                                                    </a>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="lihatbuktibayar{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                    <form action="{{ route('pengajuan.admineditvalidasipembayaran', $item->id) }}" method="POST" id="form-status-{{ $item->id }}" enctype="multipart/form-data"> 
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Bukti Pembayaran Pengajuan {{$item->id}}</h1>
                                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <img src="{{ asset('assets/img/buktibayar/'. $item->bukti_pembayaran) }}" class="img-fluid" style="width: 100%" alt="">
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                @if ($item->status_pembayaran == 'Menunggu Konfirmasi')
+                                                                    <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Validasi Pembayaran</button>
+                                                                @endif
+                                                            </div>
                                                         </div>
-                                                        <div class="modal-body">
-                                                            @php
-                                                                $ext = pathinfo(asset('assets/img/berkas/' . $item->berkas), PATHINFO_EXTENSION);
-                                                            @endphp
-                                                            <embed src="{{ asset('assets/img/berkas/'. $item->berkas) }}" type="application/pdf" width="100%" height="500px" />
+                                                    </form>
+                                                    </div>
+                                                    </div>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                @if ($item->berkas == null)
+                                                    <i class="bi bi-x-square text-danger fs-4"></i>
+                                                @else
+                                                    <a href="" class="text-dark" data-bs-toggle="modal" data-bs-target="#lihatberkas{{$item->id}}"> 
+                                                        <i class="bi bi-search fs-4"></i>
+                                                    </a>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="lihatberkas{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Berkas Pengajuan {{$item->id}}</h1>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                @php
+                                                                    $ext = pathinfo(asset('assets/img/berkas/' . $item->berkas), PATHINFO_EXTENSION);
+                                                                @endphp
+                                                                <embed src="{{ asset('assets/img/berkas/'. $item->berkas) }}" type="application/pdf" width="100%" height="500px" />
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                </div>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
+                                                    </div>
+                                                @endif
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @else
+                            <div class="row">
+                                <div class="d-flex justify-content-center align-items-center text-center">
+                                    <p style="color: red"> Belum Ada Pengajuan </p>
+                                </div>
+                            </div>
+                        @endif
                     @elseif (auth()->user()->role == 'Mitra')
                     <div class="row">
                         {{-- @if ($pengajuan->count() != 0) --}}

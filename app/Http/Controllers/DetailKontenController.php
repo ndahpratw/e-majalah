@@ -44,10 +44,15 @@ class DetailKontenController extends Controller
             'layout' => 'required',
         ]);
 
-        $data = Pengajuan::where('judul', $request->judul)->firstOrFail();
-        $data->update([
-            'status' => 'Selesai',
-        ]);
+        $data = Pengajuan::where('judul', $request->judul)->first();
+        if (!$data) {
+            return redirect()->route('pengajuan.index')->with('error', 'Judul Konten tidak ditemukan di Pengajuan');
+        }else{
+            $data->update([
+                'status' => 'Selesai',
+            ]);
+        }
+        
 
         $detail_konten = new DetailKonten();
         $detail_konten->id_konten = $request->id_konten;
