@@ -53,8 +53,16 @@ class LoginController extends Controller
         $admin = DB::table('users')->where('role', 'Admin')->count();
         $mitra = DB::table('users')->where('role', 'Mitra')->count();
         $konten = DB::table('kontens')->count();
+        $pengajuan_belum = DB::table('pengajuans')->where('status', 'Belum Diproses')->count();
+        $pengajuan_diproses = DB::table('pengajuans')->where('status', 'Sedang Diproses')->count();
+        $pengajuan_ditolak = DB::table('pengajuans')->where('status', 'Ditolak')->count();
+        $pengajuan_selesai = DB::table('pengajuans')->where('status', 'Selesai')->count();
+        $komplain_belum = DB::table('contact_us')->where('status', 'Belum Terbaca')->count();
+        $komplain_diproses = DB::table('contact_us')->where('status', 'Proses')->count();
+        $komplain_dihiraukan = DB::table('contact_us')->where('status', 'Dihiraukan')->count();
+        $komplain_selesai = DB::table('contact_us')->where('status', 'Selesai')->count();
 
-        return view('pages/admin/dashboard', compact('admin','mitra','konten'));
+        return view('pages/admin/dashboard', compact('admin','mitra','konten', 'pengajuan_belum', 'pengajuan_diproses', 'pengajuan_ditolak', 'pengajuan_selesai', 'komplain_belum', 'komplain_diproses', 'komplain_dihiraukan', 'komplain_selesai',));
     }
 
 }

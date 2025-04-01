@@ -1,6 +1,7 @@
 @extends('layouts.admin.main')
 
 @section('content')
+
     <div class="pagetitle">
         <h1>Dashboard</h1>
         <nav>
@@ -50,7 +51,7 @@
           <div class="row">
 
             <!-- Card -->
-            <div class="col-xxl-6 col-md-6">
+            <div class="col-xxl-4 col-md-4">
               <div class="card info-card sales-card">
 
                 <div class="card-body">
@@ -70,7 +71,7 @@
             </div><!-- End Card -->
 
             <!-- Card -->
-            <div class="col-xxl-6 col-md-6">
+            <div class="col-xxl-4 col-md-4">
               <div class="card info-card customers-card">
 
                 <div class="card-body">
@@ -89,45 +90,57 @@
               </div>
             </div><!-- End Card -->
 
+            <!-- Card -->
+            <div class="col-xxl-4 col-md-4">
+  
+              <div class="card info-card revenue-card">
+  
+                <div class="card-body">
+                  <h5 class="card-title">Konten</h5>
+  
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-book"></i>
+                    </div>
+                    <div class="ps-3">
+                      <h6> {{ $konten }} </h6>
+                    </div>
+                  </div>
+  
+                </div>
+              </div>
+  
+            </div><!-- End Card -->
+
           </div>
 
           <div class="row">
-              <!-- Card -->
-              <div class="col-xxl-4 col-md-6">
-
-                <div class="card info-card revenue-card">
-
-                  <div class="card-body">
-                    <h5 class="card-title">Konten</h5>
-
-                    <div class="d-flex align-items-center">
-                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                          <i class="bi bi-book"></i>
-                      </div>
-                      <div class="ps-3">
-                        <h6> {{ $konten }} </h6>
-                      </div>
-                    </div>
-
-                  </div>
-                </div>
-
-              </div><!-- End Card -->
 
               <!-- Card -->
-              <div class="col-xxl-4 col-md-6">
+              <div class="col-xxl-6 col-md-12">
 
                 <div class="card info-card sending-card">
 
                   <div class="card-body">
-                    <h5 class="card-title">Pengajuan</h5>
+                    <h5 class="card-title text-center">Pengajuan</h5>
 
-                    <div class="d-flex align-items-center">
-                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                          <i class="bi bi-clipboard2-plus-fill"></i>
+                    <div class="row align-items-center justify-content-center">
+                      <div class="col-1">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                            <i class="bi bi-clipboard2-plus-fill"></i>
+                        </div>
                       </div>
-                      <div class="ps-3">
-                        <h6></h6>
+                      <div class="col-11">
+                        <div class="ps-3">
+                          <div class="d-flex align-items-center justify-content-center">
+                            <div class="row text-center">
+                              <div class="col-3"> {{ $pengajuan_belum }} <br> <span class="badge rounded-pill bg-secondary"> belum </span> </div>
+                              <div class="col-3"> {{ $pengajuan_diproses }} <br> <span class="badge rounded-pill bg-primary"> diproses </span> </div>
+                              <div class="col-3"> {{ $pengajuan_ditolak }} <br> <span class="badge rounded-pill bg-danger"> ditolak </span> </div>
+                              <div class="col-3"> {{ $pengajuan_selesai }} <br> <span class="badge rounded-pill bg-success"> selesai </span> </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
@@ -137,19 +150,30 @@
               </div><!-- End Card -->
 
               <!-- Card -->
-              <div class="col-xxl-4 col-md-6">
+              <div class="col-xxl-6 col-md-12">
 
                 <div class="card info-card feedback-card">
 
                   <div class="card-body">
-                    <h5 class="card-title">Komplain</h5>
+                    <h5 class="card-title text-center">Komplain</h5>
 
-                    <div class="d-flex align-items-center">
-                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <div class="row align-items-center justify-content-center">
+                      <div class="col-1">
+                        <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                           <i class="bi bi-chat-left-text-fill"></i>
                       </div>
-                      <div class="ps-3">
-                        <h6> </h6>
+                      </div>
+                      <div class="col-11">
+                        <div class="ps-3">
+                          <div class="d-flex align-items-center justify-content-center">
+                            <div class="row text-center">
+                              <div class="col-3"> {{ $komplain_belum }} <br> <span class="badge rounded-pill bg-secondary"> belum </span> </div>
+                              <div class="col-3"> {{ $komplain_diproses }} <br> <span class="badge rounded-pill bg-primary"> diproses </span> </div>
+                              <div class="col-3"> {{ $komplain_dihiraukan }} <br> <span class="badge rounded-pill bg-danger"> dihiraukan </span> </div>
+                              <div class="col-3"> {{ $komplain_selesai }} <br> <span class="badge rounded-pill bg-success"> selesai </span> </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
 
