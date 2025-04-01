@@ -52,43 +52,50 @@
     <div class="offcanvas-body">
         <ul class="sidebar-nav" id="sidebar-nav">
 
-        @php
-          use Illuminate\Support\Facades\DB;
-          $konten = DB::table('kontens')->get();
-          $detail_konten = DB::table('detail_kontens')->get();
-        @endphp  
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/daftar-isi">
+              <i class="bi bi-house-fill"></i>
+              Halaman Utama
+            </a>
+          </li>
 
-        @foreach ($konten as $item)            
-        <!-- Penilaian Nav -->
-        <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#info-data{{ $item->id }}" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-file-text-fill"></i>
-            <span> {{ $item->topik }}</span>
-            <i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="info-data{{ $item->id }}" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-            <!-- Kelas Nav -->
-            @foreach ($detail_konten->where('id_konten',$item->id) as $item)
-            <li class="nav-item">
-                <a href="{{ route('layout.show',$item->id) }}" class="nav-link collapsed">
-                    <i class="bi bi-circle"></i>
-                    <span>{{ \Illuminate\Support\Str::limit($item->judul, 30, '...') }} </span>
-                </a>
-            </li>
-            @endforeach          
+          @php
+            use Illuminate\Support\Facades\DB;
+            $konten = DB::table('kontens')->get();
+            $detail_konten = DB::table('detail_kontens')->get();
+          @endphp  
+          @foreach ($konten as $item)            
+          <!-- Penilaian Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#info-data{{ $item->id }}" data-bs-toggle="collapse" href="#">
+              <i class="bi bi-file-text-fill"></i>
+              <span> {{ $item->topik }}</span>
+              <i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="info-data{{ $item->id }}" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+              <!-- Kelas Nav -->
+              @foreach ($detail_konten->where('id_konten',$item->id) as $item)
+              <li class="nav-item">
+                  <a href="{{ route('layout.show',$item->id) }}" class="nav-link collapsed">
+                      <i class="bi bi-circle"></i>
+                      <span>{{ \Illuminate\Support\Str::limit($item->judul, 30, '...') }} </span>
+                  </a>
+              </li>
+              @endforeach          
           </ul>
         </li><!-- End Penilaian Nav -->
         @endforeach
-
         </ul>
     </div>
   </div>
 
-    
   <main id="mainContent" class="main mx-3 my-4 px-3" style="text-align:justify;">    
     @yield('content')
   </main><!-- End #main -->
 
+  <div class="container copyright text-center mt-4">
+    <p>© <span>Copyright</span> <strong class="px-1 sitename">Cakrawala</strong> <span>Tak Terbatas</span></p>
+  </div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->

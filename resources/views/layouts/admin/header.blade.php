@@ -3,8 +3,12 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="index.html" class="logo d-flex align-items-center">
-        <img src="{{ asset('assets/img/logo.jpg') }}" alt="">
-        <span class="d-none d-lg-block"> Sistem </span>
+        <img src="{{ asset('assets/img/logo-utama.jpg') }}" alt="">
+        @if (auth()->user()->role == 'Admin')
+          <span class="d-none d-lg-block"> Pusat Admin </span>
+        @elseif (auth()->user()->role == 'Mitra')
+          <span class="d-none d-lg-block"> Pusat Mitra </span>
+        @endif
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>
     </div><!-- End Logo -->

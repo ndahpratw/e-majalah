@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to our Website</title>
 
+    <!-- Favicons -->
+    <link href="{{ asset('assets/img/logo-utama.jpg') }}" rel="icon">
+    <link href="{{ asset('assets/img/logo-utama.jpg') }}" rel="apple-touch-icon">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

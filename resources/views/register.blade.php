@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!-- Favicons -->
+    <link href="{{ asset('assets/img/logo-utama.jpg') }}" rel="icon">
+    <link href="{{ asset('assets/img/logo-utama.jpg') }}" rel="apple-touch-icon">
+
     <link rel="stylesheet" href="{{ asset('assets/css/login.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css">
-    <title>Register</title>
+    <title>Register Sistem</title>
 </head>
 <body style="background-color: #fae6c4">
     <section class="h-100 my-5">
@@ -17,7 +22,7 @@
               <div class="card text-black" style="border-radius: 25px;">
                 <div class="card-body p-md-5">
                   <div class="row justify-content-center">
-                    <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+                    <div class="col-md-10 col-lg-6 col-xl-5">
 
                       <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registrasi</p>
 
@@ -106,9 +111,9 @@
                       </form>
 
                     </div>
-                    <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                    <div class="col-md-10 col-lg-6 col-xl-7 d-flex justify-content-center align-items-center">
 
-                      <img src="{{ asset('assets/img/logo.jpg') }}" class="img-fluid" alt="Sample image">
+                      <img src="{{ asset('assets/img/logo-utama.jpg') }}" class="img-fluid" alt="Logo Cakrawala">
 
                     </div>
                   </div>

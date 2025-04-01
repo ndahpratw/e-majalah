@@ -8,8 +8,8 @@
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="templateArsha/img/favicon.png" rel="icon">
-  <link href="templateArsha/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="{{ asset('assets/img/logo-utama.jpg') }}" rel="icon">
+  <link href="{{ asset('assets/img/logo-utama.jpg') }}" rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -70,6 +70,8 @@
   @yield('konten2')
 
   </main>
+
+  @include('layouts.user.footer')
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

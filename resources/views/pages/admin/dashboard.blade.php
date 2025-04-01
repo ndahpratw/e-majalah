@@ -35,7 +35,7 @@
 
                         <div class="card">
                             <div class="card-body row justify-content-center text-center m-2">
-                                <img src="{{ asset('assets/img/logo.jpg') }}" alt="" class="img-fluid w-50 mt-3">
+                                <img src="{{ asset('assets/img/logo-utama2.jpg') }}" alt="" class="img-fluid m-3">
                                 <h2> SELAMAT DATANG </h2>
                                 <h4 class="text-primary">{{ auth()->user()->name }}</h4>
 

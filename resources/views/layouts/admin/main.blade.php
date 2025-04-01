@@ -5,13 +5,17 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>Sistem Informasi</title>
+  @if (auth()->user()->role == 'Admin')
+    <title>Pusat Admin - Cakrawala Tak Terbatas</title>
+  @elseif (auth()->user()->role == 'Mitra')
+    <title>Pusat Mitra - Cakrawala Tak Terbatas</title>
+  @endif
   <meta content="" name="description">
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="{{ asset('assets/img/logo.jpg') }}" rel="icon">
-  <link href="{{ asset('assets/img/logo.jpg') }}" rel="apple-touch-icon">
+  <link href="{{ asset('assets/img/logo-utama.jpg') }}" rel="icon">
+  <link href="{{ asset('assets/img/logo-utama.jpg') }}" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.gstatic.com" rel="preconnect">
