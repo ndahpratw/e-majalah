@@ -54,7 +54,7 @@
                     @endif
 
                     @if (auth()->user()->role == 'Admin')
-                        @if(count($pengajuan))                        
+                        @if(count($data_pengajuan))                        
                             <div class="table-responsive">
                                 <table class="table datatable" id="user">
                                     <thead>
@@ -223,207 +223,206 @@
                         @else
                             <div class="row">
                                 <div class="d-flex justify-content-center align-items-center text-center">
-                                    <p style="color: red"> Belum Ada Pengajuan </p>
+                                    <p style="color: red"> Belum Ada Pengajuan</p>
                                 </div>
                             </div>
                         @endif
                     @elseif (auth()->user()->role == 'Mitra')
                     <div class="row">
-                        {{-- @if ($pengajuan->count() != 0) --}}
                         @if (count($pengajuan)) 
                             @foreach ($pengajuan as $item)
                                 <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <h5 class="card-title">Topik : {{ $item->konten->topik }} </h5>
-                                            <div class="d-flex">
-                                                {{-- hapus data --}}
-                                                <button type="button" class="btn btn-danger shadow-none" data-bs-toggle="modal" data-bs-target="#hapus-data{{ $item->id }}"><i class="bi bi-trash"></i></button>
-                                                <div class="modal fade" id="hapus-data{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <div class="modal-dialog">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                            <h5 class="modal-title"> Konfirmasi Hapus Pengajuan </h5>
-                                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                            </div>
-                                                            <div class="modal-body text-center">
-                                                                <p style="color: black">Apakah anda yakin untuk menghapus data pengajuan <br> <b>{{ $item->judul }}</b> tersebut ?</p>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary shadow-none" data-bs-dismiss="modal">Tidak</button>
-                                                                <form action="{{ route('pengajuan.destroy', $item->id) }}" method="POST" style="display: inline;">
-                                                                    @method('delete')
-                                                                    @csrf
-                                                                    <input type="submit" value="Iya" class="btn btn-danger shadow-none">
-                                                                </form> 
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <table>
-                                            <tr>
-                                                <td>Judul</td>
-                                                <td class="w-25 text-center">  :  </td>
-                                                @if ($item->status == 'Selesai' && $item->status_pembayaran == 'Lunas' && $item->berkas != null)
-                                                    <a href="{{ route('layout.carijudul',$item->judul) }}" class="text-dark"><u>{{ $item->judul }}<i class="bi bi-arrow-up-right-circle"></i></u></a>
-                                                @else
-                                                    <td>{{ $item->judul }}</td>
-                                                @endif
-                                            </tr>
-                                            <tr>
-                                                <td>Sub Judul</td>
-                                                <td class="w-25 text-center">  :  </td>
-                                                <td>{{ $item->sub_judul }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Jenis Layout</td>
-                                                <td class="w-25 text-center">  :  </td>
-                                                <td>{{ $item->jenis_layout }}</td>
-                                            </tr>
-                                        </table>
-                                        <hr>
-                                        <div class="row">
-                                            <div class="col-6">
-                                                <p> Status Pemrosesan : <br> 
-                                                    @if($item->status == 'Belum Diproses')
-                                                        <span class="badge rounded-pill bg-secondary">{{ $item->status }}</span>
-                                                    @elseif($item->status == 'Sedang Diproses')
-                                                        <span class="badge rounded-pill bg-warning">{{ $item->status }}</span>
-                                                    @elseif($item->status == 'Ditolak')
-                                                        <span class="badge rounded-pill bg-danger">{{ $item->status }}</span>
-                                                    @elseif($item->status == 'Selesai')
-                                                        <span class="badge rounded-pill bg-success">{{ $item->status }}</span>
-                                                    @endif
-                                                </p>
-                                            </div>
-                                            @if ($item->status == 'Ditolak')
-                                                <div class="col-6">
-                                                    Alasan Penolakan : <br>
-                                                    <i class="text-danger">{{$item->keterangan}}</i>
-                                                </div>
-                                            @else
-                                            <div class="col-6">
-                                                Status Pembayaran : <br>
-                                                @if($item->status == 'Sedang Diproses' || $item->status == 'Selesai' )
-                                                    @if ($item->status_pembayaran == 'Belum Bayar')
-                                                    <span class="badge rounded-pill bg-danger">Belum melakukan pembayaran</span>
-                                                        <button type="button" class="btn btn-secondary mt-2" data-bs-toggle="modal" data-bs-target="#upbuktibayar{{$item->id}}"> <i class="bi bi-file-plus"></i> Upload Bukti Bayar </button>
-
-                                                            <!-- Modal -->
-                                                            <div class="modal fade" id="upbuktibayar{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                            <div class="modal-dialog">
-                                                            <form action="{{ route('pengajuan.admineditbuktibayar', $item->id) }}" method="POST" id="form-status-{{ $item->id }}" enctype="multipart/form-data"> 
-                                                                @csrf
-                                                                @method('PUT')
-                                                                <div class="modal-content">
-                                                                    <div class="modal-header">
-                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Upload Bukti Bayar</h1>
-                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                                    </div>
-                                                                    <div class="modal-body">
-                                                                        <div class="input-group mb-3">
-                                                                            <input type="file" class="form-control" id="inputGroupFile02" name="bukti_pembayaran">
-                                                                            <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                                                                        </div>
-                                                                        <i class="text-danger">* Hanya menerima file gambar (jpg / png)</i>
-                                                                    </div>
-                                                                    <div class="modal-footer">
-                                                                        <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Kirim</button>
-                                                                    </div>
-                                                                </div>
-                                                            </form>
-                                                            </div>
-                                                            </div>
-                                                    @elseif ($item->status_pembayaran == 'Menunggu Konfirmasi')
-                                                    <span class="badge rounded-pill bg-warning">Menunggu Konfirmasi Admin</span>
-                                                    <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#showbuktibayar{{$item->id}}"> <i class="bi bi-search"></i> Lihat Bukti Bayar </button>
-
-                                                        <!-- Modal -->
-                                                        <div class="modal fade" id="showbuktibayar{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <h5 class="card-title">Topik : {{ $item->konten->topik }} </h5>
+                                                <div class="d-flex">
+                                                    {{-- hapus data --}}
+                                                    <button type="button" class="btn btn-danger shadow-none" data-bs-toggle="modal" data-bs-target="#hapus-data{{ $item->id }}"><i class="bi bi-trash"></i></button>
+                                                    <div class="modal fade" id="hapus-data{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header">
-                                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Bukti Pembayaran Anda</h1>
+                                                                <h5 class="modal-title"> Konfirmasi Hapus Pengajuan </h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                 </div>
-                                                                <div class="modal-body">
-                                                                    <img src="{{ asset('assets/img/buktibayar/'. $item->bukti_pembayaran) }}" class="img-fluid" style="width: 100%" alt="">
+                                                                <div class="modal-body text-center">
+                                                                    <p style="color: black">Apakah anda yakin untuk menghapus data pengajuan <br> <b>{{ $item->judul }}</b> tersebut ?</p>
                                                                 </div>
                                                                 <div class="modal-footer">
-                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                                                    <button type="button" class="btn btn-secondary shadow-none" data-bs-dismiss="modal">Tidak</button>
+                                                                    <form action="{{ route('pengajuan.destroy', $item->id) }}" method="POST" style="display: inline;">
+                                                                        @method('delete')
+                                                                        @csrf
+                                                                        <input type="submit" value="Iya" class="btn btn-danger shadow-none">
+                                                                    </form> 
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        </div>
-                                                    @elseif ($item->status_pembayaran == 'Lunas')
-                                                    <span class="badge rounded-pill bg-success">Pembayaran Anda Lunas</span>
-                                                    @endif
-                                                @elseif ($item->status == 'Belum Diproses')
-                                                    <span class="badge rounded-pill bg-warning">menunggu persetujuan admin</span>
-                                                @endif
-                                            </div>
-                                            @endif
-                                        </div>
-                                        @if ($item->status == 'Sedang Diproses' && $item->status_pembayaran == 'Lunas' && $item->berkas == null)
-                                            <hr>
-                                            <i>Silahkan upload file anda yang berisikan teks dan gambar dalam satu file (pdf) dengan jumlah yang sesuai dengan layout yang anda pilih yaitu 
-                                                <a href="#" role="button" class="text-decoration-underline text-dark" data-bs-toggle="modal" data-bs-target="#showjenislayout{{$item->id}}">
-                                                    {{$item->jenis_layout}}
-                                                </a>
-                                            </i>
-                                            <!-- Modal -->
-                                            <div class="modal fade" id="showjenislayout{{$item->id}}" tabindex="-1" aria-labelledby="modalLabel{{$item->id}}" aria-hidden="true">
-                                                <div class="modal-dialog">
-                                                    <div class="modal-content">
-                                                        <div class="modal-body text-center">
-                                                            @if($item->jenis_layout == 'Layout 1')
-                                                                <img src="{{ asset('assets/img/layout/layout 1.jpg') }}" class="img-fluid" style="width: 100%" alt="Layout 1">
-                                                            @elseif ($item->jenis_layout == 'Layout 2')
-                                                                <img src="{{ asset('assets/img/layout/layout 2.jpg') }}" class="img-fluid" style="width: 100%" alt="Layout 2">
-                                                            @elseif ($item->jenis_layout == 'Layout 3')
-                                                                <img src="{{ asset('assets/img/layout/layout 3.jpg') }}" class="img-fluid" style="width: 100%" alt="Layout 2">
-                                                            @elseif ($item->jenis_layout == 'Layout 4')
-                                                                <img src="{{ asset('assets/img/layout/layout 4.jpg') }}" class="img-fluid" style="width: 100%" alt="Layout 2">
-                                                            @elseif ($item->jenis_layout == 'Layout 5')
-                                                                <img src="{{ asset('assets/img/layout/layout 5.jpg') }}" class="img-fluid" style="width: 100%" alt="Layout 2">
-                                                            @elseif ($item->jenis_layout == 'Layout 6')
-                                                                <img src="{{ asset('assets/img/layout/layout 6.jpg') }}" class="img-fluid" style="width: 100%" alt="Layout 2">
-                                                            @else
-                                                                <p class="text-danger">Gambar tidak ditemukan.</p>
-                                                            @endif
-                                                        </div>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-
-                                            <form action="{{ route('pengajuan.update', $item->id) }}" method="POST" id="form-status-{{ $item->id }}" enctype="multipart/form-data"> 
-                                                @csrf
-                                                @method('PUT')
-                                                <div class="input-group mb-3 mt-3">
-                                                    <input type="file" class="form-control" id="inputGroupFile02" name="berkas">
-                                                    <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                                            <hr>
+                                            <table>
+                                                <tr>
+                                                    <td>Judul</td>
+                                                    <td class="w-25 text-center">  :  </td>
+                                                    @if ($item->status == 'Selesai' && $item->status_pembayaran == 'Lunas' && $item->berkas != null)
+                                                        <a href="{{ route('layout.carijudul',$item->judul) }}" class="text-dark"><u>{{ $item->judul }}<i class="bi bi-arrow-up-right-circle"></i></u></a>
+                                                    @else
+                                                        <td>{{ $item->judul }}</td>
+                                                    @endif
+                                                </tr>
+                                                <tr>
+                                                    <td>Sub Judul</td>
+                                                    <td class="w-25 text-center">  :  </td>
+                                                    <td>{{ $item->sub_judul }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Jenis Layout</td>
+                                                    <td class="w-25 text-center">  :  </td>
+                                                    <td>{{ $item->jenis_layout }}</td>
+                                                </tr>
+                                            </table>
+                                            <hr>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <p> Status Pemrosesan : <br> 
+                                                        @if($item->status == 'Belum Diproses')
+                                                            <span class="badge rounded-pill bg-secondary">{{ $item->status }}</span>
+                                                        @elseif($item->status == 'Sedang Diproses')
+                                                            <span class="badge rounded-pill bg-warning">{{ $item->status }}</span>
+                                                        @elseif($item->status == 'Ditolak')
+                                                            <span class="badge rounded-pill bg-danger">{{ $item->status }}</span>
+                                                        @elseif($item->status == 'Selesai')
+                                                            <span class="badge rounded-pill bg-success">{{ $item->status }}</span>
+                                                        @endif
+                                                    </p>
                                                 </div>
-                                                <i class="text-danger">* Hanya menerima file dokumen (pdf)</i>
-                                                <hr>
-                                                <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Kirim</button>
-                                            </form>
+                                                @if ($item->status == 'Ditolak')
+                                                    <div class="col-6">
+                                                        Alasan Penolakan : <br>
+                                                        <i class="text-danger">{{$item->keterangan}}</i>
+                                                    </div>
+                                                @else
+                                                <div class="col-6">
+                                                    Status Pembayaran : <br>
+                                                    @if($item->status == 'Sedang Diproses' || $item->status == 'Selesai' )
+                                                        @if ($item->status_pembayaran == 'Belum Bayar')
+                                                        <span class="badge rounded-pill bg-danger">Belum melakukan pembayaran</span>
+                                                            <button type="button" class="btn btn-secondary mt-2" data-bs-toggle="modal" data-bs-target="#upbuktibayar{{$item->id}}"> <i class="bi bi-file-plus"></i> Upload Bukti Bayar </button>
 
-                                        @elseif ($item->status == 'Sedang Diproses' && $item->status_pembayaran == 'Lunas' && $item->berkas != null)
-                                            <hr>
-                                            <i>Pembuatan konten dari berkas yang Anda kirim sedang di kerjakan oleh Admin. Mohon Sabar Menunggu</i>
-                                        @elseif ($item->status == 'Selesai' && $item->status_pembayaran == 'Lunas' && $item->berkas != null)
-                                            <hr>
-                                            <i>Pembuatan konten dari berkas yang Anda kirim sudah selesai. Anda bisa mengklik judul pengajuan konten Anda</i>
-                                        @endif
+                                                                <!-- Modal -->
+                                                                <div class="modal fade" id="upbuktibayar{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                                <div class="modal-dialog">
+                                                                <form action="{{ route('pengajuan.admineditbuktibayar', $item->id) }}" method="POST" id="form-status-{{ $item->id }}" enctype="multipart/form-data"> 
+                                                                    @csrf
+                                                                    @method('PUT')
+                                                                    <div class="modal-content">
+                                                                        <div class="modal-header">
+                                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Upload Bukti Bayar</h1>
+                                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                        </div>
+                                                                        <div class="modal-body">
+                                                                            <div class="input-group mb-3">
+                                                                                <input type="file" class="form-control" id="inputGroupFile02" name="bukti_pembayaran">
+                                                                                <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                                                                            </div>
+                                                                            <i class="text-danger">* Hanya menerima file gambar (jpg / png)</i>
+                                                                        </div>
+                                                                        <div class="modal-footer">
+                                                                            <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Kirim</button>
+                                                                        </div>
+                                                                    </div>
+                                                                </form>
+                                                                </div>
+                                                                </div>
+                                                        @elseif ($item->status_pembayaran == 'Menunggu Konfirmasi')
+                                                        <span class="badge rounded-pill bg-warning">Menunggu Konfirmasi Admin</span>
+                                                        <button type="button" class="btn btn-primary mt-2" data-bs-toggle="modal" data-bs-target="#showbuktibayar{{$item->id}}"> <i class="bi bi-search"></i> Lihat Bukti Bayar </button>
+
+                                                            <!-- Modal -->
+                                                            <div class="modal fade" id="showbuktibayar{{$item->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Bukti Pembayaran Anda</h1>
+                                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <img src="{{ asset('assets/img/buktibayar/'. $item->bukti_pembayaran) }}" class="img-fluid" style="width: 100%" alt="">
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            </div>
+                                                        @elseif ($item->status_pembayaran == 'Lunas')
+                                                        <span class="badge rounded-pill bg-success">Pembayaran Anda Lunas</span>
+                                                        @endif
+                                                    @elseif ($item->status == 'Belum Diproses')
+                                                        <span class="badge rounded-pill bg-warning">menunggu persetujuan admin</span>
+                                                    @endif
+                                                </div>
+                                                @endif
+                                            </div>
+                                            @if ($item->status == 'Sedang Diproses' && $item->status_pembayaran == 'Lunas' && $item->berkas == null)
+                                                <hr>
+                                                <i>Silahkan upload file anda yang berisikan teks dan gambar dalam satu file (pdf) dengan jumlah yang sesuai dengan layout yang anda pilih yaitu 
+                                                    <a href="#" role="button" class="text-decoration-underline text-dark" data-bs-toggle="modal" data-bs-target="#showjenislayout{{$item->id}}">
+                                                        {{$item->jenis_layout}}
+                                                    </a>
+                                                </i>
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="showjenislayout{{$item->id}}" tabindex="-1" aria-labelledby="modalLabel{{$item->id}}" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-body text-center">
+                                                                @if($item->jenis_layout == 'Layout 1')
+                                                                    <img src="{{ asset('assets/img/layout/layout 1.jpg') }}" class="img-fluid" style="width: 100%" alt="Layout 1">
+                                                                @elseif ($item->jenis_layout == 'Layout 2')
+                                                                    <img src="{{ asset('assets/img/layout/layout 2.jpg') }}" class="img-fluid" style="width: 100%" alt="Layout 2">
+                                                                @elseif ($item->jenis_layout == 'Layout 3')
+                                                                    <img src="{{ asset('assets/img/layout/layout 3.jpg') }}" class="img-fluid" style="width: 100%" alt="Layout 2">
+                                                                @elseif ($item->jenis_layout == 'Layout 4')
+                                                                    <img src="{{ asset('assets/img/layout/layout 4.jpg') }}" class="img-fluid" style="width: 100%" alt="Layout 2">
+                                                                @elseif ($item->jenis_layout == 'Layout 5')
+                                                                    <img src="{{ asset('assets/img/layout/layout 5.jpg') }}" class="img-fluid" style="width: 100%" alt="Layout 2">
+                                                                @elseif ($item->jenis_layout == 'Layout 6')
+                                                                    <img src="{{ asset('assets/img/layout/layout 6.jpg') }}" class="img-fluid" style="width: 100%" alt="Layout 2">
+                                                                @else
+                                                                    <p class="text-danger">Gambar tidak ditemukan.</p>
+                                                                @endif
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <form action="{{ route('pengajuan.update', $item->id) }}" method="POST" id="form-status-{{ $item->id }}" enctype="multipart/form-data"> 
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <div class="input-group mb-3 mt-3">
+                                                        <input type="file" class="form-control" id="inputGroupFile02" name="berkas">
+                                                        <label class="input-group-text" for="inputGroupFile02">Upload</label>
+                                                    </div>
+                                                    <i class="text-danger">* Hanya menerima file dokumen (pdf)</i>
+                                                    <hr>
+                                                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Kirim</button>
+                                                </form>
+
+                                            @elseif ($item->status == 'Sedang Diproses' && $item->status_pembayaran == 'Lunas' && $item->berkas != null)
+                                                <hr>
+                                                <i>Pembuatan konten dari berkas yang Anda kirim sedang di kerjakan oleh Admin. Mohon Sabar Menunggu</i>
+                                            @elseif ($item->status == 'Selesai' && $item->status_pembayaran == 'Lunas' && $item->berkas != null)
+                                                <hr>
+                                                <i>Pembuatan konten dari berkas yang Anda kirim sudah selesai. Anda bisa mengklik judul pengajuan konten Anda</i>
+                                            @endif
+                                        </div>
                                     </div>
-                                </div>
                                 </div>
                             @endforeach
                         @else
