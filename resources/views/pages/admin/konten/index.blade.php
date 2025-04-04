@@ -73,6 +73,14 @@
                                 <a href="{{ route('konten.show',$item->id) }}" class="btn btn-info"><i class="bi bi-chevron-double-right"></i></a>
                               </div>
                             </div>
+                            <p class="text-center">
+                              <b>Kategori : </b>
+                              @if($item->kategori == 'iklan')
+                                  <span class="badge rounded-pill bg-primary">iklan</span>
+                              @elseif($item->kategori == 'non-iklan')
+                                  <span class="badge rounded-pill bg-secondary">non - iklan</span>
+                              @endif
+                            </p>
                           </div>
                         </div>
                       </div>

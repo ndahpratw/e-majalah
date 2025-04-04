@@ -41,6 +41,7 @@ class KontenController extends Controller
     {
         $request->validate([
             'topik' => 'required',
+            'kategori' => 'required',
             'gambar' => 'required',
         ]);
 
@@ -51,6 +52,7 @@ class KontenController extends Controller
         $gambar->move(public_path('assets/img/konten/'), $imageName);
 
         $konten->topik = $request->topik;
+        $konten->kategori = $request->kategori;
         $konten->gambar = $imageName;
 
         if ($konten->save()) {
@@ -86,9 +88,11 @@ class KontenController extends Controller
      */
     public function update(Request $request, $id)
     {
+        // dd($request);
         $request->validate([
             'topik' => 'required',
-            'gambar' => 'required',
+            'kategori' => 'required',
+            // 'gambar' => 'required',
         ]);
 
         $konten = Konten::findOrFail($id);
@@ -108,6 +112,7 @@ class KontenController extends Controller
 
         $konten->update([
             'topik' => $request->topik,
+            'kategori' => $request->kategori,
             'gambar' => $imageName,
         ]);
 

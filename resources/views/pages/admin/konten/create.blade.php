@@ -31,6 +31,17 @@
                       @enderror
                     </div>
                     <div class="mt-2">
+                      <label for="" class="form-label fw-bold">Kategori Konten</label>
+                      <select id="kategori" name="kategori" class="form-select @error('kategori') is-invalid @enderror shadow-none">
+                        <option value="" selected disabled> Pilih kategori </option>
+                        <option value="iklan" {{ old('kategori') == 'iklan' ? 'selected' : '' }}>iklan</option>
+                        <option value="non-iklan" {{ old('kategori') == 'non-iklan' ? 'selected' : '' }}>non-iklan</option>
+                    </select>
+                    @error('kategori')
+                        <div class="text-danger">{{ $message }}</div>
+                    @enderror
+                    </div>
+                    <div class="mt-2">
                       <label for="" class="form-label fw-bold">Gambar</label>
                       <input type="file" name="gambar" id="" class="form-control @error('gambar') is-invalid @enderror" accept="image/*">
                       @error('gambar')

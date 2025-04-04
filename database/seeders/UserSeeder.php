@@ -50,6 +50,16 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('password'),
                 'created_at' => now(),
                 'updated_at' => now(),
+            ],
+            [
+                'name' => 'Cakrawala Tak Terbatas',
+                'email' => 'cakrawalatakterbatasindonesia@gmail.com',
+                'no_telepon' => '6282132331948',
+                'role' => 'Admin',
+                'address' => 'Malang, Jawa Timur',
+                'password' => Hash::make('aryaandhika'),
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
         ]);
     }

@@ -18,54 +18,67 @@ class KontenSeeder extends Seeder
         $kontens = [
             [
                 'topik' => 'Catatan Redaksi',
+                'kategori' => 'non-iklan',
                 'gambar' => 'catatan redaksi.jpg',
             ],
             [
                 'topik' => 'Cerita Hidup',
+                'kategori' => 'iklan',
                 'gambar' => 'cerita hidup.jpg',
             ],
             [
                 'topik' => 'Map Kota Malang & Bali',
+                'kategori' => 'iklan',
                 'gambar' => 'map malang.jpg',
             ],
             [
                 'topik' => 'Kilas Wisata',
+                'kategori' => 'iklan',
                 'gambar' => 'kilas wisata.jpg',
             ],
             [
                 'topik' => 'Kuliner',
+                'kategori' => 'iklan',
                 'gambar' => 'kuliner.jpg',
             ],
             [
                 'topik' => 'Tips dan Solusi Sehat',
+                'kategori' => 'iklan',
                 'gambar' => 'solusi sehat.jpg',
             ],
             [
                 'topik' => 'Peluang Usaha',
+                'kategori' => 'iklan',
                 'gambar' => 'peluang usaha.jpg',
             ],
             [
                 'topik' => 'Jasa Titip',
+                'kategori' => 'iklan',
                 'gambar' => 'jasa titip.jpg',
             ],
             [
                 'topik' => 'Kecantikan',
+                'kategori' => 'iklan',
                 'gambar' => 'kecantikan.jpg',
             ],
             [
                 'topik' => 'Loker',
+                'kategori' => 'iklan',
                 'gambar' => 'loker.jpg',
             ],
             [
                 'topik' => 'Ketenangan Jiwa',
+                'kategori' => 'iklan',
                 'gambar' => 'ketenangan jiwa.jpg',
             ],
             [
                 'topik' => 'Jendela Promosi',
+                'kategori' => 'iklan',
                 'gambar' => 'jendela promosi.jpg',
             ],
             [
                 'topik' => 'Laporan Khusus',
+                'kategori' => 'iklan',
                 'gambar' => 'laporan khusus.jpg',
             ],
         ];

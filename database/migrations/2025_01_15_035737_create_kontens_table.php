@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('kontens', function (Blueprint $table) {
             $table->id();
             $table->string('topik');
+            $table->enum('kategori',['iklan', 'non-iklan']);
             $table->string('gambar');
             $table->timestamps();
         });

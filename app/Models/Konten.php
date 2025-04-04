@@ -11,6 +11,7 @@ class Konten extends Model
 
     protected $fillable = [
         'topik',
+        'kategori',
         'gambar',
     ];
 }

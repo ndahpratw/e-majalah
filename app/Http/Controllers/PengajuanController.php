@@ -25,7 +25,7 @@ class PengajuanController extends Controller
      */
     public function create()
     {
-        $konten = Konten::all();
+        $konten = Konten::where('kategori', 'iklan')->get();
         return view('pages.admin.pengajuan.create', compact('konten'));
     }
 
