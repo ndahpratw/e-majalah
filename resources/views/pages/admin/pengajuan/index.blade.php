@@ -325,7 +325,7 @@
                                                                         </div>
                                                                         <div class="modal-body">
                                                                             <div class="input-group mb-3">
-                                                                                <input type="file" class="form-control" id="inputGroupFile02" name="bukti_pembayaran">
+                                                                                <input type="file" class="form-control" id="inputGroupFile02" name="bukti_pembayaran" accept="image/*">
                                                                                 <label class="input-group-text" for="inputGroupFile02">Upload</label>
                                                                             </div>
                                                                             <i class="text-danger">* Hanya menerima file gambar (jpg / png)</i>

@@ -44,41 +44,63 @@ class DetailKontenController extends Controller
             'layout' => 'required',
         ]);
 
-        $data = Pengajuan::where('judul', $request->judul)->first();
-        if (!$data) {
-            return redirect()->route('pengajuan.index')->with('error', 'Judul Konten tidak ditemukan di Pengajuan');
-        }else{
-            $data->update([
-                'status' => 'Selesai',
-            ]);
-        }
+        $konten = Konten::find($request->id_konten);
         
-
+        // tambah data
         $detail_konten = new DetailKonten();
         $detail_konten->id_konten = $request->id_konten;
         $detail_konten->judul = $request->judul;
         $detail_konten->sub_judul = $request->sub_judul;
         $detail_konten->jenis_layout = $request->layout;
-        if ($detail_konten->save() && $data->save()) {
-            if ($request->layout == 'Layout 1') {
-                return redirect()->route('layout1.show', $detail_konten->id)->with('success','Informasi detail konten berhasil ditambahkan');
-            } elseif ($request->layout == 'Layout 2') {
-                return redirect()->route('layout2.show', $detail_konten->id)->with('success','Informasi detail konten berhasil ditambahkan');
-            } elseif ($request->layout == 'Layout 3') {
-                return redirect()->route('layout3.show', $detail_konten->id)->with('success','Informasi detail konten berhasil ditambahkan');
-            } elseif ($request->layout == 'Layout 4') {
-                return redirect()->route('layout4.show', $detail_konten->id)->with('success','Informasi detail konten berhasil ditambahkan');
-            } elseif ($request->layout == 'Layout 5') {
-                return redirect()->route('layout5.show', $detail_konten->id)->with('success','Informasi detail konten berhasil ditambahkan');
-            } elseif ($request->layout == 'Layout 6') {
-                return redirect()->route('layout6.show', $detail_konten->id)->with('success','Informasi detail konten berhasil ditambahkan');
+
+        if ($konten && $konten->kategori == 'iklan') {
+            $pengajuan = Pengajuan::where('judul', $request->judul)->first();
+
+            if (!$pengajuan) {
+                return redirect()->route('pengajuan.index')->with('error', 'Judul Konten tidak ditemukan di Pengajuan');
+            } else {
+                $pengajuan->update([
+                    'status' => 'Selesai',
+                ]);
+
+                if ($detail_konten->save() && $pengajuan->save()) {
+                    if ($request->layout == 'Layout 1') {
+                        return redirect()->route('layout1.show', $detail_konten->id)->with('success','Informasi detail konten berhasil ditambahkan');
+                    } elseif ($request->layout == 'Layout 2') {
+                        return redirect()->route('layout2.show', $detail_konten->id)->with('success','Informasi detail konten berhasil ditambahkan');
+                    } elseif ($request->layout == 'Layout 3') {
+                        return redirect()->route('layout3.show', $detail_konten->id)->with('success','Informasi detail konten berhasil ditambahkan');
+                    } elseif ($request->layout == 'Layout 4') {
+                        return redirect()->route('layout4.show', $detail_konten->id)->with('success','Informasi detail konten berhasil ditambahkan');
+                    } elseif ($request->layout == 'Layout 5') {
+                        return redirect()->route('layout5.show', $detail_konten->id)->with('success','Informasi detail konten berhasil ditambahkan');
+                    } elseif ($request->layout == 'Layout 6') {
+                        return redirect()->route('layout6.show', $detail_konten->id)->with('success','Informasi detail konten berhasil ditambahkan');
+                    }
+                } else {
+                    return redirect()->route('konten.show', $request->id_konten)->with('error', 'Gagal menambahkan data');
+                }
             }
         } else {
-            return redirect()->route('konten.show', $request->id_konten)->with('error', 'Gagal menambahkan data');
+
+            if ($detail_konten->save()) {
+                if ($request->layout == 'Layout 1') {
+                    return redirect()->route('layout1.show', $detail_konten->id)->with('success','Informasi detail konten berhasil ditambahkan');
+                } elseif ($request->layout == 'Layout 2') {
+                    return redirect()->route('layout2.show', $detail_konten->id)->with('success','Informasi detail konten berhasil ditambahkan');
+                } elseif ($request->layout == 'Layout 3') {
+                    return redirect()->route('layout3.show', $detail_konten->id)->with('success','Informasi detail konten berhasil ditambahkan');
+                } elseif ($request->layout == 'Layout 4') {
+                    return redirect()->route('layout4.show', $detail_konten->id)->with('success','Informasi detail konten berhasil ditambahkan');
+                } elseif ($request->layout == 'Layout 5') {
+                    return redirect()->route('layout5.show', $detail_konten->id)->with('success','Informasi detail konten berhasil ditambahkan');
+                } elseif ($request->layout == 'Layout 6') {
+                    return redirect()->route('layout6.show', $detail_konten->id)->with('success','Informasi detail konten berhasil ditambahkan');
+                }
+            } else {
+                return redirect()->route('konten.show', $request->id_konten)->with('error', 'Gagal menambahkan data');
+            }
         }
-        
-
-
     }
 
     /**
